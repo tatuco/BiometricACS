@@ -7,8 +7,6 @@ Python3, tensorflow 1.1.0, numpy, opencv 3, pyqt 5.
 
 ### Getting started
 
-######You can choose _one_ of the following three ways to get started with darkflow.
-
 Installation as software:
 
 1.  Create virtual environment
