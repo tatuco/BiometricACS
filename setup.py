@@ -4,8 +4,6 @@ import os
 
 VERSION = version.__version__
 
-os.system(r'pip freeze > '+os.path.join(os.path.abspath(os.path.dirname(__file__)), 'requirements.txt'))
-
 with open("README.md", 'r') as f:
     long_description = f.read()
 
