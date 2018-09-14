@@ -21,7 +21,7 @@ Installation as software:
 
 3. Install external libraries
     ```
-    pip install requirements.txt
+    pip install -r requirements.txt
     ```
     
 Installation as module:
