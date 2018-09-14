@@ -5,6 +5,8 @@ grpcio==1.15.0
 Markdown==2.6.11
 numpy==1.15.1
 protobuf==3.6.1
+PyQt5==5.11.2
+PyQt5-sip==4.19.12
 six==1.11.0
 tensorboard==1.10.0
 tensorflow-gpu==1.10.0
