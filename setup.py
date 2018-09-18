@@ -1,6 +1,5 @@
 from setuptools import setup, find_packages
 from BiometricACS import version
-import os
 
 VERSION = version.__version__
 

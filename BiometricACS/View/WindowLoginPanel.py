@@ -1,0 +1,112 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'C:\Users\Delpro\Desktop\WindowLoginPanel.ui'
+#
+# Created by: PyQt5 UI code generator 5.11.2
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_wLoginPanel(object):
+    def setupUi(self, wLoginPanel):
+        wLoginPanel.setObjectName("wLoginPanel")
+        wLoginPanel.setWindowModality(QtCore.Qt.WindowModal)
+        wLoginPanel.setEnabled(True)
+        wLoginPanel.resize(316, 219)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(wLoginPanel.sizePolicy().hasHeightForWidth())
+        wLoginPanel.setSizePolicy(sizePolicy)
+        wLoginPanel.setMaximumSize(QtCore.QSize(316, 219))
+        wLoginPanel.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        wLoginPanel.setMouseTracking(False)
+        wLoginPanel.setAcceptDrops(False)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(".\Source\Program.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        wLoginPanel.setWindowIcon(icon)
+        self.gridLayout = QtWidgets.QGridLayout(wLoginPanel)
+        self.gridLayout.setObjectName("gridLayout")
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.lblTitle = QtWidgets.QLabel(wLoginPanel)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.lblTitle.setFont(font)
+        self.lblTitle.setTextFormat(QtCore.Qt.RichText)
+        self.lblTitle.setObjectName("lblTitle")
+        self.verticalLayout.addWidget(self.lblTitle)
+        self.formLayout = QtWidgets.QFormLayout()
+        self.formLayout.setLabelAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.formLayout.setContentsMargins(5, 5, 5, 5)
+        self.formLayout.setVerticalSpacing(10)
+        self.formLayout.setObjectName("formLayout")
+        self.lblUsername = QtWidgets.QLabel(wLoginPanel)
+        self.lblUsername.setObjectName("lblUsername")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.lblUsername)
+        self.tbUsername = QtWidgets.QLineEdit(wLoginPanel)
+        self.tbUsername.setObjectName("tbUsername")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.tbUsername)
+        self.lblPassword = QtWidgets.QLabel(wLoginPanel)
+        self.lblPassword.setObjectName("lblPassword")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.lblPassword)
+        self.tbPassword = QtWidgets.QLineEdit(wLoginPanel)
+        self.tbPassword.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.tbPassword.setObjectName("tbPassword")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.tbPassword)
+        self.verticalLayout.addLayout(self.formLayout)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)
+        self.horizontalLayout.setSpacing(20)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.btnLogin = QtWidgets.QPushButton(wLoginPanel)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnLogin.sizePolicy().hasHeightForWidth())
+        self.btnLogin.setSizePolicy(sizePolicy)
+        self.btnLogin.setObjectName("btnLogin")
+        self.horizontalLayout.addWidget(self.btnLogin)
+        self.btnCancel = QtWidgets.QPushButton(wLoginPanel)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnCancel.sizePolicy().hasHeightForWidth())
+        self.btnCancel.setSizePolicy(sizePolicy)
+        self.btnCancel.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.btnCancel.setObjectName("btnCancel")
+        self.horizontalLayout.addWidget(self.btnCancel)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
+
+        self.retranslateUi(wLoginPanel)
+        QtCore.QMetaObject.connectSlotsByName(wLoginPanel)
+        wLoginPanel.setTabOrder(self.tbUsername, self.tbPassword)
+        wLoginPanel.setTabOrder(self.tbPassword, self.btnLogin)
+        wLoginPanel.setTabOrder(self.btnLogin, self.btnCancel)
+
+    def retranslateUi(self, wLoginPanel):
+        _translate = QtCore.QCoreApplication.translate
+        wLoginPanel.setWindowTitle(_translate("wLoginPanel", "BACS Login Panel"))
+        self.lblTitle.setText(_translate("wLoginPanel", "Login Panel"))
+        self.lblUsername.setText(_translate("wLoginPanel", "Username:"))
+        self.lblPassword.setText(_translate("wLoginPanel", "Password:"))
+        self.btnLogin.setText(_translate("wLoginPanel", "Login"))
+        self.btnCancel.setText(_translate("wLoginPanel", "Cancel"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    wLoginPanel = QtWidgets.QWidget()
+    ui = Ui_wLoginPanel()
+    ui.setupUi(wLoginPanel)
+    wLoginPanel.show()
+    sys.exit(app.exec_())
+
