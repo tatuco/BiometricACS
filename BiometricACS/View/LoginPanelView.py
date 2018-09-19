@@ -16,6 +16,9 @@ class LoginPanenView(QWidget, Observer):
         self.ui.btnLogin.clicked.connect(self.mController.loginClicked)
         self.ui.btnCancel.clicked.connect(self.mController.cancelClicked)
 
+    def keyPressEvent(self, QKeyEvent):
+        self.mController.entetrClicled(QKeyEvent)
+
     def modelIsChanged(self):
         if self.mModel.isRegistredUser():
             #TODO Open sub windows

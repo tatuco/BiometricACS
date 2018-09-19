@@ -1,4 +1,5 @@
 from BiometricACS.View.LoginPanelView import LoginPanenView
+from PyQt5 import QtCore
 
 
 class LoginPanelController():
@@ -7,6 +8,10 @@ class LoginPanelController():
         self.mModel = imModel
         self.mView = LoginPanenView(self.mModel, self)
         self.mView.show()
+
+    def entetrClicled(self, event):
+        if event.key() + 1 == QtCore.Qt.Key_Enter:
+            self.loginClicked()
 
     def loginClicked(self):
         username = self.mView.ui.tbUsername.text()
