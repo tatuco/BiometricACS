@@ -6,8 +6,8 @@ import sys
 def Main():
     app = QApplication(sys.argv)
 
-    model = LoginPanelModel()
-    controller = LoginPanelController(model)
+    login_model = LoginPanelModel()
+    login_controller = LoginPanelController(login_model)
     app.exec()
 
 if __name__ == '__main__':

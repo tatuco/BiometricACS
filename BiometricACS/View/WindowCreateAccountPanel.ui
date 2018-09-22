@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>wLoginPanel</class>
- <widget class="QWidget" name="wLoginPanel">
-  <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
-  </property>
-  <property name="enabled">
-   <bool>true</bool>
-  </property>
+ <class>wCreateAccountPanel</class>
+ <widget class="QWidget" name="wCreateAccountPanel">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>316</width>
-    <height>219</height>
+    <width>366</width>
+    <height>256</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,32 +18,16 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>316</width>
-    <height>219</height>
+    <width>400</width>
+    <height>300</height>
    </size>
   </property>
-  <property name="cursor">
-   <cursorShape>ArrowCursor</cursorShape>
-  </property>
-  <property name="mouseTracking">
-   <bool>false</bool>
-  </property>
-  <property name="acceptDrops">
-   <bool>false</bool>
-  </property>
   <property name="windowTitle">
-   <string>BACS Login</string>
-  </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../Projects/BiometricACS/BiometricACS/Source/Program.ico</normaloff>../../../Projects/BiometricACS/BiometricACS/Source/Program.ico</iconset>
+   <string>BACS Create Account</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetMaximumSize</enum>
-     </property>
      <item>
       <widget class="QLabel" name="lblTitle">
        <property name="font">
@@ -58,13 +36,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Login Panel</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::RichText</enum>
-       </property>
-       <property name="margin">
-        <number>5</number>
+        <string>Create account</string>
        </property>
       </widget>
      </item>
@@ -88,27 +60,43 @@
        <property name="bottomMargin">
         <number>5</number>
        </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="lblUsername">
-         <property name="text">
-          <string>Username:</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="1">
         <widget class="QLineEdit" name="tbUsername"/>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="lblPassword">
+        <widget class="QLabel" name="lblRole">
          <property name="text">
-          <string>Password:</string>
+          <string>Role:</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="tbPassword">
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
+        <widget class="QComboBox" name="cmbRole"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lblPassword">
+         <property name="text">
+          <string>Password</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="tbPassword"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblConfirmPassword">
+         <property name="text">
+          <string>Confirm password:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="tbConfirmPassword"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lblUsername">
+         <property name="text">
+          <string>Username:</string>
          </property>
         </widget>
        </item>
@@ -158,29 +146,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="btnLogin">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+        <widget class="QPushButton" name="btnCreate">
          <property name="text">
-          <string>Login</string>
+          <string>Create</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnCancel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::DefaultContextMenu</enum>
-         </property>
          <property name="text">
           <string>Cancel</string>
          </property>
@@ -192,12 +165,6 @@
    </item>
   </layout>
  </widget>
- <tabstops>
-  <tabstop>tbUsername</tabstop>
-  <tabstop>tbPassword</tabstop>
-  <tabstop>btnLogin</tabstop>
-  <tabstop>btnCancel</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -93,7 +93,7 @@ class Ui_wLoginPanel(object):
 
     def retranslateUi(self, wLoginPanel):
         _translate = QtCore.QCoreApplication.translate
-        wLoginPanel.setWindowTitle(_translate("wLoginPanel", "BACS Login Panel"))
+        wLoginPanel.setWindowTitle(_translate("wLoginPanel", "BACS Login"))
         self.lblTitle.setText(_translate("wLoginPanel", "Login Panel"))
         self.lblUsername.setText(_translate("wLoginPanel", "Username:"))
         self.lblPassword.setText(_translate("wLoginPanel", "Password:"))

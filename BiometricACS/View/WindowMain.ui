@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Kolpakov Denis</author>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>780</width>
+    <height>582</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BACS Control Panel</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../Projects/BiometricACS/BiometricACS/Source/Program.ico</normaloff>../../../Projects/BiometricACS/BiometricACS/Source/Program.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,4">
+    <item row="0" column="0" rowspan="3" colspan="2">
+     <widget class="QTabWidget" name="tabPresenter">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tabCheckpoints">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <attribute name="title">
+        <string>Сheckpoints</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3" columnstretch="1,4">
+        <item row="0" column="1">
+         <widget class="QGroupBox" name="gbVideoStream">
+          <property name="title">
+           <string>Video Stream</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout" columnstretch="2,0">
+           <item row="0" column="1">
+            <widget class="QGraphicsView" name="gvLandmarksDetection"/>
+           </item>
+           <item row="0" column="0" rowspan="2">
+            <widget class="QGraphicsView" name="gvFaceDetection">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QGraphicsView" name="gvFaceNormalization"/>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QLabel" name="lblDetectedName">
+             <property name="text">
+              <string>Detected Name:</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="gbControlPanel">
+          <property name="title">
+           <string>Control Panel</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="btnGetAccess">
+             <property name="text">
+              <string>Get Access</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnSaveFace">
+             <property name="text">
+              <string>Save Face</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLockCheckpoint">
+             <property name="text">
+              <string>Lock Checkpoint</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnUnlockCheckpoint">
+             <property name="text">
+              <string>Unlock Checkpoint</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0" rowspan="2">
+         <widget class="QGroupBox" name="gbCameras">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="title">
+           <string>Cameras</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QTreeWidget" name="treeCameras">
+             <column>
+              <property name="text">
+               <string notr="true">1</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabSessionLog">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <attribute name="title">
+        <string>Session log</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0" rowspan="2" colspan="2">
+         <widget class="QListView" name="lvVisitsLog"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabStatistics">
+       <attribute name="title">
+        <string>Statistics</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <widget class="QLineEdit" name="tbSearchName"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="btnSaveStatistics">
+          <property name="text">
+           <string>Save</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QTableWidget" name="tableStatistics"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubarMain">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>780</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="mFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuExport">
+     <property name="title">
+      <string>Export</string>
+     </property>
+     <addaction name="actionExportSessionLog"/>
+    </widget>
+    <addaction name="menuExport"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuControl">
+    <property name="title">
+     <string>Control</string>
+    </property>
+    <widget class="QMenu" name="menuSettings">
+     <property name="title">
+      <string>Settings</string>
+     </property>
+     <addaction name="actionOpenSettings"/>
+     <addaction name="actionImportSettings"/>
+     <addaction name="actionExportSettings"/>
+    </widget>
+    <widget class="QMenu" name="menuAccounts">
+     <property name="title">
+      <string>Accounts</string>
+     </property>
+     <addaction name="actionRelogin"/>
+     <addaction name="actionCreateAccount"/>
+     <addaction name="actionExport_Accounts"/>
+    </widget>
+    <widget class="QMenu" name="menuData">
+     <property name="title">
+      <string>Data</string>
+     </property>
+     <addaction name="actionAddBbiometricsData"/>
+     <addaction name="actionBackingUpData"/>
+    </widget>
+    <addaction name="menuData"/>
+    <addaction name="menuSettings"/>
+    <addaction name="menuAccounts"/>
+   </widget>
+   <addaction name="mFile"/>
+   <addaction name="menuControl"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbarCurrentEvent"/>
+  <action name="actionExportSessionLog">
+   <property name="text">
+    <string>Session log</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionOpenSettiongs">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionImportSettings">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="actionExportSettings">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionRelogin">
+   <property name="text">
+    <string>Relogin</string>
+   </property>
+  </action>
+  <action name="actionOpenSettings">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionImportSettings">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="actionExportSettings">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionRelogin">
+   <property name="text">
+    <string>Relogin</string>
+   </property>
+  </action>
+  <action name="actionExport_Accounts">
+   <property name="text">
+    <string>Export Accounts</string>
+   </property>
+  </action>
+  <action name="actionCreateAccount">
+   <property name="text">
+    <string>Create</string>
+   </property>
+  </action>
+  <action name="actionAddBbiometricsData">
+   <property name="text">
+    <string>Add biometrics data</string>
+   </property>
+  </action>
+  <action name="actionBackingUpData">
+   <property name="text">
+    <string>Backing up data</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>btnGetAccess</tabstop>
+  <tabstop>btnSaveFace</tabstop>
+  <tabstop>btnLockCheckpoint</tabstop>
+  <tabstop>btnUnlockCheckpoint</tabstop>
+  <tabstop>gvLandmarksDetection</tabstop>
+  <tabstop>tabPresenter</tabstop>
+  <tabstop>gvFaceDetection</tabstop>
+  <tabstop>lvVisitsLog</tabstop>
+  <tabstop>gvFaceNormalization</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
