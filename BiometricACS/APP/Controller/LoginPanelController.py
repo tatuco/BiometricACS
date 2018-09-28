@@ -1,4 +1,4 @@
-from BiometricACS.View.LoginPanelView import LoginPanenView
+from BiometricACS.APP.View.LoginPanelView import LoginPanenView
 from PyQt5 import QtCore
 
 
@@ -16,7 +16,15 @@ class LoginPanelController():
     def loginClicked(self):
         username = self.mView.ui.tbUsername.text()
         password = self.mView.ui.tbPassword.text()
-        self.mModel.user = [username, password]
+        self.mModel.update(username, password, None)
 
     def cancelClicked(self):
         exit(0)
+
+    def isRegistredUser(self):
+        db = DataContext()
+        user = db.session.query(type(self.mModel)).filter_by(type(self.mModel).username==self.mView.ui.tbUsername.text() and type(self.mMode).password==self.mView.ui.tbPassword.text()).first()
+        print(user)
+        if user!=None:
+            print('asff')
+        return user!=None

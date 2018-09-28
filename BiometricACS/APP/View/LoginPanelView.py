@@ -1,13 +1,13 @@
 from PyQt5.QtWidgets import QWidget
-from BiometricACS.Utility.Observer import Observer
-from .WindowLoginPanel import Ui_wLoginPanel
+from BiometricACS.BLL.Utility import Observer
+from BiometricACS.APP.UI.WindowLoginPanel import Ui_wLoginPanel
 
 
 class LoginPanenView(QWidget, Observer):
-    def __init__(self, imModel, inController, parent=None):
+    def __init__(self, inModel, inController, parent=None):
         super(QWidget, self).__init__(parent)
         self.mController = inController
-        self.mModel = imModel
+        self.mModel = inModel
         self.mModel.addObserver(self)
 
         self.ui = Ui_wLoginPanel()
@@ -20,6 +20,6 @@ class LoginPanenView(QWidget, Observer):
         self.mController.entetrClicled(QKeyEvent)
 
     def modelIsChanged(self):
-        if self.mModel.isRegistredUser():
+        if self.mController.isRegistredUser():
             #TODO Open sub windows
             self.destroy(destroySubWindows=False)
