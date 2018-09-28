@@ -1,18 +1,17 @@
 from sqlalchemy import NVARCHAR, INTEGER, Enum
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import Base
 from .EnumModels import AccountRole
+from .BaseEntity import BaseEntity, Base
 
 
-class Account(Base):
+class Account(Base, BaseEntity):
     __tablename__ = 'account'
 
     _id = Column('id', INTEGER, primary_key=True)
     _username = Column('username', NVARCHAR(100), nullable=False, unique=True)
     _password = Column('password', NVARCHAR(40), nullable=False)
     _role = Column('role', Enum(AccountRole), nullable=False)
-
 
     @hybrid_property
     def id(self):

@@ -1,8 +1,8 @@
 from sqlalchemy import VARCHAR, INTEGER, Enum, ForeignKey
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import Base
-from ..Model.EnumModels import CamerasVector
+from .BaseEntity import BaseEntity, Base
+from ..Entities.EnumModels import CamerasVector
 
 
 class Camera(Base):

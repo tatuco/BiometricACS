@@ -1,7 +1,7 @@
 from sqlalchemy import VARCHAR, INTEGER
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import Base
+from .BaseEntity import BaseEntity, Base
 
 
 class Checkpoint(Base):

@@ -1,8 +1,8 @@
 from sqlalchemy import NVARCHAR, INTEGER, Enum, ForeignKey
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import Base
-from ..Model.EnumModels import EmployeeStatus
+from .BaseEntity import BaseEntity, Base
+from ..Entities.EnumModels import EmployeeStatus
 
 
 class Employee(Base):
@@ -52,7 +52,6 @@ class Employee(Base):
     @dept_id.setter
     def dept_id(self, value):
         self._dept_id = value
-
 
     def __repr__(self):
         return "<Employee(id='%d', first_name='%s', last_name='%s', status='%s', dept_id='%d')>" % (self.id, self.first_name, self.last_name, self.status, self.dept_id)

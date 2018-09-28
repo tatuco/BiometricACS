@@ -1,7 +1,7 @@
 from sqlalchemy import NVARCHAR, INTEGER, ForeignKey
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import Base
+from .BaseEntity import BaseEntity, Base
 
 
 class Department(Base):
@@ -12,13 +12,17 @@ class Department(Base):
     _cheif_id = Column('cheif_id', INTEGER, ForeignKey('employee.id'), nullable=False)
 
     @hybrid_property
+    def id(self):
+        return self._id
+
+    @hybrid_property
     def name(self):
         return self._name
 
     @name.setter
     def name(self, value):
         if value not in [None, '']:
-            self._cheif_id = value
+            self._name = value
 
     @hybrid_property
     def cheif_id(self):

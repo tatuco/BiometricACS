@@ -1,11 +1,10 @@
-from sqlalchemy import NUMERIC, INTEGER, ARRAY, Enum, ForeignKey
+from sqlalchemy import NUMERIC, INTEGER, ARRAY, ForeignKey
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import Base
-from ..Model.EnumModels import CamerasVector
+from .BaseEntity import BaseEntity, Base
 
 
-class Biometrics(Base):
+class Biometrics(Base, BaseEntity):
     __tablename__ = 'biometrics'
 
     _id = Column('id', INTEGER, primary_key=True)
