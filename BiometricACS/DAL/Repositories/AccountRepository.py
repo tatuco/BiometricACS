@@ -1,29 +1,22 @@
 from zope.interface import implements, implementer, classImplements, provider
+from .BaseRepository import BaseRepository
 from ..Entities.Account import Account
 from ..Interfaces.IRepository import IRepository
 
 
 @implementer(IRepository)
 @provider(IRepository)
-class AccountRepository(object):
+class AccountRepository(BaseRepository):
 
     def __init__(self, context):
-        self.db = context
+        self._db = context
+        self._type = Account
 
     def get_all(self):
-        return self.db.Account.all()
+        return self._db.Account.all()
 
     def get(self, item_id):
-        return self.db.Account.filter(Account.id == item_id).first()
+        return self._db.Account.filter(Account.id == item_id).first()
 
     def find(self, predicate):
-        return self.db.Account.filter(predicate).all()
-
-    def create(self, item):
-        self.db.sess.add(item)
-
-    def update(self, item):
-        self.get(item.id).update(item)
-
-    def delete(self, item):
-        self.db.sess.delete(item)
+        return self._db.Account.filter(*predicate).all()

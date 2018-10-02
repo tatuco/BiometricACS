@@ -11,10 +11,6 @@ class Checkpoint(Base):
     _address = Column('address', VARCHAR, nullable=False)
 
     @hybrid_property
-    def id(self):
-        return self._id
-
-    @hybrid_property
     def address(self):
         return self._address
 
@@ -22,6 +18,3 @@ class Checkpoint(Base):
     def address(self, value):
         if value not in [None, '']:
             self._address = value
-
-    def __repr__(self):
-        return "<Checkpoint(id='%d', address='%s')>" % (self.id, self.address)

@@ -14,10 +14,6 @@ class Account(Base, BaseEntity):
     _role = Column('role', Enum(AccountRole), nullable=False)
 
     @hybrid_property
-    def id(self):
-        return self._id
-
-    @hybrid_property
     def username(self):
         return self._username
 
@@ -43,8 +39,3 @@ class Account(Base, BaseEntity):
     def role(self, vale):
         if vale in list(AccountRole):
             self._role = vale
-
-    def __repr__(self):
-        return "<Account(id='%d', username='%s', password='%s', role='%s')>" %(self.id, self.username, self.password, self.role)
-
-

@@ -14,10 +14,6 @@ class Visit(Base):
     _camera_id = Column('camera_id', INTEGER, ForeignKey('camera.id'), nullable=False)
 
     @hybrid_property
-    def id(self):
-        return self._id
-
-    @hybrid_property
     def datetime(self):
         return self._date_time
 
@@ -50,6 +46,3 @@ class Visit(Base):
     def camera_id(self, value):
         if value > 0:
             self._camera_id = value
-
-    def __repr__(self):
-        return "<Visit(id='%d', datetime='%s', event='%s',  emp_id='%d', camera_id='%d')>" % (self.id, self.datetime, self.event, self.emp_id, self.camera_id)

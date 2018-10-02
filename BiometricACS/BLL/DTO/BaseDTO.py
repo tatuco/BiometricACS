@@ -1,18 +1,15 @@
-from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy.ext.declarative import declarative_base
+class BaseDTO:
 
-Base = declarative_base()
-
-
-class BaseEntity():
-
-    @hybrid_property
+    @property
     def id(self):
         return self._id
 
+    @id.setter
+    def id(self, value):
+        self._id = value
+
     def update(self, item):
         attr = [f for f in dir(self) if not callable(getattr(self, f)) and not f.startswith('__') and not f.startswith('_') and f != 'id' and f != 'metadata']
-        # assert isinstance(item, type(self))
         for a in attr:
             self.__setattr__(a, item.__getattribute__(a))
         return self

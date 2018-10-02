@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Projects\BiometricACS\BiometricACS\View\WindowMain.ui'
+# Form implementation generated from reading ui file 'C:\Projects\BiometricACS\BiometricACS\Views\WindowMain.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.2
 #

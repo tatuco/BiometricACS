@@ -12,10 +12,6 @@ class Department(Base):
     _cheif_id = Column('cheif_id', INTEGER, ForeignKey('employee.id'), nullable=False)
 
     @hybrid_property
-    def id(self):
-        return self._id
-
-    @hybrid_property
     def name(self):
         return self._name
 
@@ -32,6 +28,3 @@ class Department(Base):
     def cheif_id(self, value):
         if value > 0:
             self._cheif_id = value
-
-    def __repr__(self):
-        return "<Department(id='%d', name='%s', cheif_id='%d')>" % (self.id, self.name, self.cheif_id)

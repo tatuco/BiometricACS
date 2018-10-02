@@ -14,10 +14,6 @@ class Biometrics(Base, BaseEntity):
     _emp_id = Column('emp_id', INTEGER, ForeignKey('employee.id'), nullable=False)
 
     @hybrid_property
-    def id(self):
-        return self._id
-
-    @hybrid_property
     def original_image(self):
         return self._original_image
 
@@ -41,5 +37,11 @@ class Biometrics(Base, BaseEntity):
     def features(self, value):
         self._features = value
 
-    def __repr__(self):
-        return "<Biometrics(id='%d')>" % (self.id)
+    @hybrid_property
+    def emp_id(self):
+        return self._emp_id
+
+    @emp_id.setter
+    def emp_id(self, value):
+        if value>0:
+            self._emp_id = value

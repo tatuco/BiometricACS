@@ -1,11 +1,12 @@
 from zope.interface import implements, implementer, classImplements, provider
+from .BaseRepository import BaseRepository
 from ..Entities.Checkpoint import Checkpoint
 from ..Interfaces.IRepository import IRepository
 
 
 @implementer(IRepository)
 @provider(IRepository)
-class CheckpointRepository(object):
+class CheckpointRepository(BaseRepository):
 
     def __init__(self, context):
         self.db = context
@@ -17,13 +18,4 @@ class CheckpointRepository(object):
         return self.db.Checkpoint.filter(Checkpoint.id == item_id).first()
 
     def find(self, predicate):
-        return self.db.Checkpoint.filter(predicate).all()
-
-    def create(self, item):
-        self.db.sess.add(item)
-
-    def update(self, item):
-        self.get(item.id).update(item)
-
-    def delete(self, item):
-        self.db.sess.delete(item)
+        return self.db.Checkpoint.filter(*predicate).all()

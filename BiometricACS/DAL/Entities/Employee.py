@@ -15,10 +15,6 @@ class Employee(Base):
     _dept_id = Column('dept_id', INTEGER, ForeignKey('employee.id'), nullable=False)
 
     @hybrid_property
-    def id(self):
-        return self._id
-
-    @hybrid_property
     def first_name(self):
         return self._first_name
 
@@ -52,9 +48,4 @@ class Employee(Base):
     @dept_id.setter
     def dept_id(self, value):
         self._dept_id = value
-
-    def __repr__(self):
-        return "<Employee(id='%d', first_name='%s', last_name='%s', status='%s', dept_id='%d')>" % (self.id, self.first_name, self.last_name, self.status, self.dept_id)
-
-
 

@@ -14,10 +14,6 @@ class Camera(Base):
     _ckpt_id = Column('ckpt_id', INTEGER, ForeignKey('checkpoint.id'), nullable=False)
 
     @hybrid_property
-    def id(self):
-        return self._id
-
-    @hybrid_property
     def vector(self):
         return self._vector
 
@@ -36,13 +32,10 @@ class Camera(Base):
             self._device_name = value
 
     @hybrid_property
-    def chpt_id(self):
+    def ckpt_id(self):
         return self._ckpt_id
 
-    @chpt_id.setter
-    def chpt_id(self, value):
+    @ckpt_id.setter
+    def ckpt_id(self, value):
         if value > 0:
             self._ckpt_id = value
-
-    def __repr__(self):
-        return "<Camera(id='%d', vector='%s', device_name='%s',  ckpt_id='%d')>" % (self.id, self.vector, self.device_name, self.chpt_id)
