@@ -1,4 +1,7 @@
-class BaseService:
+from abc import ABC, abstractmethod
+
+
+class BaseService(ABC):
     _mObservers = []
 
     def add_observer(self, inObserver):
@@ -10,3 +13,9 @@ class BaseService:
     def notify_observers(self):
         for o in self._mObservers:
             o.model_is_changed()
+
+    def get_obs(self):
+        return self._mObservers
+
+    def __init__(self):
+        self._mObservers = []

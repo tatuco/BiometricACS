@@ -2,12 +2,16 @@ import sys
 import os
 import pickle
 from PyQt5.QtWidgets import QApplication
-from BiometricACS.APP import program_settings
+from BiometricACS.APP import *
 from BiometricACS.BLL.Services import AuthorizationService
 from BiometricACS.APP.Controllers import LoginPanelController
 
 
 def main():
+    log = Log(datetime.now(), 'Initialize program components')
+    print(log)
+    program_logs.add_log(log)
+
     o_path_default = '.\APP\Sources\Options'
     s_file_default = '.\APP\Sources\Settings'
     if not os.path.exists(o_path_default):
@@ -25,7 +29,7 @@ def main():
 
     app = QApplication(sys.argv)
     login_controller = LoginPanelController(AuthorizationService())
-    app.exec()
+    sys.exit(app.exec_())
 
 
 if __name__ == '__main__':

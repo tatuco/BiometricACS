@@ -1,4 +1,28 @@
+from datetime import datetime
+
+
 class Log:
+
+    @staticmethod
+    def get_relogin_log(username, printing=True):
+        log = Log(datetime.now(), "Relogin as '%s'" % username)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_bad_login_log(username, printing=True):
+        log = Log(datetime.now(), "Failed login as '%s'" % username)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_close_log(printing=True):
+        log = Log(datetime.now(), "The program has completed its work." )
+        if printing:
+            print(log)
+        return log
 
     @property
     def date_time(self):
