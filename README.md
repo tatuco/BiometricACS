@@ -3,7 +3,7 @@ Biometric access control system
 
 ## Dependencies
 
-Python3, tensorflow 1.1.0, numpy, opencv 3, pyqt 5.
+Python 3.6.5, tensorflow 1.1.0, numpy, opencv 3, pyqt 5.
 
 ### Getting started
 
@@ -11,7 +11,7 @@ Installation as software:
 
 1.  Create virtual environment
     ```
-    python3 -m venv venv
+    python -m venv venv
     ```
     
 2. Activate virtual environment
@@ -26,5 +26,5 @@ Installation as software:
     
 Installation as module:
     ```
-    python3 setup.py install develop
+    python setup.py install develop
     ```   
