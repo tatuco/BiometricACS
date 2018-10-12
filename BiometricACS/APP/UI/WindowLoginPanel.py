@@ -24,7 +24,7 @@ class Ui_wLoginPanel(object):
         wLoginPanel.setMouseTracking(False)
         wLoginPanel.setAcceptDrops(False)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\Source\Program.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(".\APP\Sources\Icons\Program.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         wLoginPanel.setWindowIcon(icon)
         self.gridLayout = QtWidgets.QGridLayout(wLoginPanel)
         self.gridLayout.setObjectName("gridLayout")

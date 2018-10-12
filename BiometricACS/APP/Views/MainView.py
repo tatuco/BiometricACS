@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QWidget
 from PyQt5.QtCore import Qt
 from ..Utilities import Observer
 from ..UI import Ui_MainWindow
-from ..AppStart import program_logs, Log, datetime
+from ..AppStart import program_logs
 
 
 class MainView(QMainWindow, Observer):
@@ -21,7 +21,8 @@ class MainView(QMainWindow, Observer):
         self.ui.actionExit.triggered.connect(self.controller.cancel_clicked)
 
     def closeEvent(self, *args, **kwargs):
-        program_logs.add_log(Log.get_close_log())
+        program_logs.close_log()
+        program_logs.save(r'C:\Projects\BiometricACS\BiometricACS\APP\Sources\Logs')
         self.close()
 
     def model_is_changed(self):

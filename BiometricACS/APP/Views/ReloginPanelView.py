@@ -25,6 +25,5 @@ class ReloginPanelView(QDialog, Observer):
     def closeEvent(self, *args, **kwargs):
         self.close()
 
-
     def model_is_changed(self):
         self.controller.relogin()

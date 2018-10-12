@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from . import MainView
 from ..Utilities import Observer
 from ..UI import Ui_wLoginPanel
-from ..AppStart import program_logs, Log
+from ..AppStart import program_logs
 
 
 class LoginPanelView(QWidget, Observer):

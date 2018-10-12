@@ -8,12 +8,17 @@ from BiometricACS.APP.Controllers import LoginPanelController
 
 
 def main():
-    log = Log(datetime.now(), 'Initialize program components')
-    print(log)
-    program_logs.add_log(log)
+    setup_settings()
+    app = QApplication(sys.argv)
+    LoginPanelController(AuthorizationService())
+    sys.exit(app.exec_())
 
+
+def setup_settings():
     o_path_default = '.\APP\Sources\Options'
     s_file_default = '.\APP\Sources\Settings'
+    l_path_default = 'APP\Sources\Logs'
+
     if not os.path.exists(o_path_default):
         with open(o_path_default, 'wb') as f:
             pickle.dump(s_file_default, f)
@@ -27,9 +32,24 @@ def main():
 
     program_settings.restore()
 
-    app = QApplication(sys.argv)
-    login_controller = LoginPanelController(AuthorizationService())
-    sys.exit(app.exec_())
+    if not program_settings.logs_path:
+        program_settings.logs_path = l_path_default
+        # if not os.path.exists(program_settings.logs_path):
+        #     os.mkdir(program_settings.logs_path)
+        program_settings.save()
+
+    if program_settings.logs_path==l_path_default and not os.path.exists(program_settings.logs_path) :
+        os.mkdir(program_settings.logs_path)
+
+    if program_settings.logs_saving is None:
+        program_settings.logs_saving = False
+        program_settings.save()
+
+    if program_settings.logs_saving:
+        program_logs.set_log_file(program_settings.logs_path)
+
+    program_logs.start_program_log()
+    program_logs.start()
 
 
 if __name__ == '__main__':

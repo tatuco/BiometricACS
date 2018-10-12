@@ -19,7 +19,7 @@ class Ui_wCreateAccountPanel(object):
         wCreateAccountPanel.setSizePolicy(sizePolicy)
         wCreateAccountPanel.setMaximumSize(QtCore.QSize(400, 300))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\Source\Program.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(".\APP\Sources\Icons\Program.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         wCreateAccountPanel.setWindowIcon(icon)
         self.gridLayout = QtWidgets.QGridLayout(wCreateAccountPanel)
         self.gridLayout.setObjectName("gridLayout")

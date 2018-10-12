@@ -27,14 +27,15 @@ class Settings:
         attr = [f for f in dir(self) if not callable(getattr(self, f)) and not f.startswith('__') and not f.startswith('_') and f != 'metadata']
         for a in range(len(attr)):
             repr_str += attr[a] + "='" + str(self.__getattribute__(attr[a]))
-            if a != len(attr)-1:
+            if a != len(attr) - 1:
                 repr_str += "', "
                 continue
             repr_str += "')>"
         return repr_str
 
-    def __init__(self, settings_file=None, backup_path=None, logs_path=None, trust_factor=None):
+    def __init__(self, settings_file=None, backup_path=None, logs_path=None, logs_saving=None, trust_factor=None):
         self.settings_file = settings_file
-        self.backup_path=backup_path
-        self.logs_path=logs_path
-        self.trust_factor=trust_factor
+        self.backup_path = backup_path
+        self.logs_path = logs_path
+        self.logs_saving = logs_saving
+        self.trust_factor = trust_factor

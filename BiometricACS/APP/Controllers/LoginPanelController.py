@@ -1,7 +1,7 @@
 from PyQt5 import QtCore
 from ..Views import LoginPanelView
 from ...BLL.DTO import AccountDTO
-from ..AppStart import program_logs, datetime, Log
+from ..AppStart import program_logs
 from ..Controllers import MainController
 from ...BLL.Services import MainService
 
@@ -34,11 +34,9 @@ class LoginPanelController:
     def main(self):
         result, user = self.is_registred()
         if result:
-            log = Log(datetime.now(), "Login as '%s'" % user.username)
-            print(log)
-            program_logs.add_log(log)
+            program_logs.login_log(user.username)
 
             self.view_close()
             main_controller = MainController(MainService(user), self.view)
         else:
-            log = Log.get_bad_login_log(self.view.ui.tbUsername.text())
+            log = program_logs.bad_login_log(self.view.ui.tbUsername.text())

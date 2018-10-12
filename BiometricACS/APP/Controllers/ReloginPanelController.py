@@ -1,6 +1,6 @@
 from PyQt5 import QtCore
 from ..Views import ReloginPanelView
-from ..AppStart import program_logs, datetime, Log
+from ..AppStart import program_logs
 from ...BLL import AccountDTO
 
 
@@ -30,6 +30,6 @@ class ReloginPanelController:
     def relogin(self):
         result, user = self.is_registred()
         if result:
-            program_logs.add_log(Log.get_relogin_log(user.username))
+            program_logs.relogin_log(user.username)
             self.view.parent_o.model_is_changed()
             self.view.close()
