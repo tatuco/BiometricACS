@@ -53,6 +53,62 @@ class Log:
             print(log)
         return log
 
+    @staticmethod
+    def get_create_account_log(printing, username):
+        log = Log(datetime.now(), "Account '%s' created" % username, LogLevels.INFO)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_export_accounts_log(printing, file_name):
+        log = Log(datetime.now(), "Export accounts to file '%s'" % file_name, LogLevels.INFO)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_export_logs_log(printing, file_name):
+        log = Log(datetime.now(), "Export session log to file '%s'" % file_name, LogLevels.INFO)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_add_checkpoint_log(printing, address):
+        log = Log(datetime.now(), "Added checkpoint '%s'" % address, LogLevels.INFO)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_add_camera_log(printing, device, vector, address):
+        log = Log(datetime.now(), "Added device '%s' aimed at '%s' on '%s'" % (device, vector, address), LogLevels.INFO)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_change_checkpoint_address_log(printing, old_address, new_address):
+        log = Log(datetime.now(), "Changed checkpoint address '%s' -> '%s'" % (old_address, new_address), LogLevels.WARNING)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_delete_camera_log(printing, device, vector, address):
+        log = Log(datetime.now(), "Camera removed: '%s' device, '%s' vector, on '%s'" % (device, vector, address), LogLevels.WARNING)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_delete_checkpoint_log(printing, address):
+        log = Log(datetime.now(), "Checkpoint '%s' removed" % address, LogLevels.WARNING)
+        if printing:
+            print(log)
+        return log
+
     @property
     def date_time(self):
         return self._datetime
