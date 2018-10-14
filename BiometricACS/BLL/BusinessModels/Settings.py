@@ -5,7 +5,7 @@ import os
 class Settings:
 
     def get_attrs(self):
-        return list([f for f in dir(self) if not callable(getattr(self, f)) and not f.startswith('__')])
+        return list([f for f in dir(self) if not callable(getattr(self, f)) and not f.startswith('_') and f != 'cfg_file'])
 
     def save(self):
         options = []
@@ -22,9 +22,13 @@ class Settings:
                 for (o, attr) in zip(options, self.get_attrs()):
                     self.__setattr__(attr, o)
 
+    @property
+    def cfg_file(self):
+        return self._cfg_path
+
     def __repr__(self):
         repr_str = '<' + type(self).__name__ + '('
-        attr = [f for f in dir(self) if not callable(getattr(self, f)) and not f.startswith('__') and not f.startswith('_') and f != 'metadata']
+        attr = self.get_attrs()
         for a in range(len(attr)):
             repr_str += attr[a] + "='" + str(self.__getattribute__(attr[a]))
             if a != len(attr) - 1:
@@ -33,9 +37,11 @@ class Settings:
             repr_str += "')>"
         return repr_str
 
-    def __init__(self, settings_file=None, backup_path=None, logs_path=None, logs_saving=None, trust_factor=None):
+    def __init__(self, settings_file='.\.\APP\Sources\Settings', backup_path=None, logs_path='.\.\APP\Sources\Logs', logs_saving=True, trust_factor=None, connection_string=None):
         self.settings_file = settings_file
         self.backup_path = backup_path
         self.logs_path = logs_path
         self.logs_saving = logs_saving
         self.trust_factor = trust_factor
+        self.connection_string = connection_string
+        self._cfg_path = '.\.\APP\Sources\Sys\cfg'
