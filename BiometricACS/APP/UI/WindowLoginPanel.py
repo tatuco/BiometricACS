@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Delpro\Desktop\WindowLoginPanel.ui'
+# Form implementation generated from reading ui file 'C:\Projects\BiometricACS\BiometricACS\APP\UI\WindowLoginPanel.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.2
 #
@@ -23,9 +23,6 @@ class Ui_wLoginPanel(object):
         wLoginPanel.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         wLoginPanel.setMouseTracking(False)
         wLoginPanel.setAcceptDrops(False)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\APP\Sources\Icons\Program.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        wLoginPanel.setWindowIcon(icon)
         self.gridLayout = QtWidgets.QGridLayout(wLoginPanel)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -99,14 +96,4 @@ class Ui_wLoginPanel(object):
         self.lblPassword.setText(_translate("wLoginPanel", "Password:"))
         self.btnLogin.setText(_translate("wLoginPanel", "Login"))
         self.btnCancel.setText(_translate("wLoginPanel", "Cancel"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    wLoginPanel = QtWidgets.QWidget()
-    ui = Ui_wLoginPanel()
-    ui.setupUi(wLoginPanel)
-    wLoginPanel.show()
-    sys.exit(app.exec_())
 

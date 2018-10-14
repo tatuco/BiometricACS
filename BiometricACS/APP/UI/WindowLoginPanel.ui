@@ -40,10 +40,6 @@
   <property name="windowTitle">
    <string>BACS Login</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../Projects/BiometricACS/BiometricACS/Source/Program.ico</normaloff>../../../Projects/BiometricACS/BiometricACS/Source/Program.ico</iconset>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">

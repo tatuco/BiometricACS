@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Projects\BiometricACS\BiometricACS\Views\WindowCreateAccountPanel.ui'
+# Form implementation generated from reading ui file 'C:\Projects\BiometricACS\BiometricACS\APP\UI\WindowCreateAccountPanel.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.2
 #
@@ -18,9 +18,6 @@ class Ui_wCreateAccountPanel(object):
         sizePolicy.setHeightForWidth(wCreateAccountPanel.sizePolicy().hasHeightForWidth())
         wCreateAccountPanel.setSizePolicy(sizePolicy)
         wCreateAccountPanel.setMaximumSize(QtCore.QSize(400, 300))
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\APP\Sources\Icons\Program.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        wCreateAccountPanel.setWindowIcon(icon)
         self.gridLayout = QtWidgets.QGridLayout(wCreateAccountPanel)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -49,12 +46,14 @@ class Ui_wCreateAccountPanel(object):
         self.lblPassword.setObjectName("lblPassword")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.lblPassword)
         self.tbPassword = QtWidgets.QLineEdit(wCreateAccountPanel)
+        self.tbPassword.setEchoMode(QtWidgets.QLineEdit.Password)
         self.tbPassword.setObjectName("tbPassword")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.tbPassword)
         self.lblConfirmPassword = QtWidgets.QLabel(wCreateAccountPanel)
         self.lblConfirmPassword.setObjectName("lblConfirmPassword")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.lblConfirmPassword)
         self.tbConfirmPassword = QtWidgets.QLineEdit(wCreateAccountPanel)
+        self.tbConfirmPassword.setEchoMode(QtWidgets.QLineEdit.Password)
         self.tbConfirmPassword.setObjectName("tbConfirmPassword")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.tbConfirmPassword)
         self.lblUsername = QtWidgets.QLabel(wCreateAccountPanel)

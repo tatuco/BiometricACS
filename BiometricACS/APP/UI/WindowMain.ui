@@ -7,20 +7,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>780</width>
-    <height>582</height>
+    <width>996</width>
+    <height>599</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>BACS Control Panel</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>../../../Projects/BiometricACS/BiometricACS/Source/Program.ico</normaloff>../../../Projects/BiometricACS/BiometricACS/Source/Program.ico</iconset>
-  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,4">
-    <item row="0" column="0" rowspan="3" colspan="2">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabPresenter">
       <property name="autoFillBackground">
        <bool>true</bool>
@@ -35,95 +31,107 @@
        <attribute name="title">
         <string>Сheckpoints</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_3" columnstretch="1,4">
-        <item row="0" column="1">
-         <widget class="QGroupBox" name="gbVideoStream">
-          <property name="title">
-           <string>Video Stream</string>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <layout class="QGridLayout" name="gridLayout" columnstretch="2,0">
-           <item row="0" column="1">
-            <widget class="QGraphicsView" name="gvLandmarksDetection"/>
-           </item>
-           <item row="0" column="0" rowspan="2">
-            <widget class="QGraphicsView" name="gvFaceDetection">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Sunken</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QGraphicsView" name="gvFaceNormalization"/>
-           </item>
-           <item row="2" column="0" colspan="2">
-            <widget class="QLabel" name="lblDetectedName">
-             <property name="text">
-              <string>Detected Name:</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QGroupBox" name="gbControlPanel">
-          <property name="title">
-           <string>Control Panel</string>
+          <property name="handleWidth">
+           <number>5</number>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QPushButton" name="btnGetAccess">
-             <property name="text">
-              <string>Get Access</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnSaveFace">
-             <property name="text">
-              <string>Save Face</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnLockCheckpoint">
-             <property name="text">
-              <string>Lock Checkpoint</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnUnlockCheckpoint">
-             <property name="text">
-              <string>Unlock Checkpoint</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="0" column="0" rowspan="2">
-         <widget class="QGroupBox" name="gbCameras">
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="title">
-           <string>Cameras</string>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QTreeWidget" name="treeCameras">
-             <column>
-              <property name="text">
-               <string notr="true">1</string>
+          <widget class="QGroupBox" name="gbCameras">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="title">
+            <string>Cameras</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_6">
+            <item row="0" column="0">
+             <widget class="QTreeWidget" name="treeCameras">
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QGroupBox" name="gbVideoStream">
+              <property name="title">
+               <string>Video Stream</string>
               </property>
-             </column>
-            </widget>
-           </item>
-          </layout>
+              <layout class="QGridLayout" name="gridLayout" columnstretch="2,0">
+               <item row="0" column="1">
+                <widget class="QGraphicsView" name="gvLandmarksDetection"/>
+               </item>
+               <item row="0" column="0" rowspan="2">
+                <widget class="QGraphicsView" name="gvFaceDetection">
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Sunken</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QGraphicsView" name="gvFaceNormalization"/>
+               </item>
+               <item row="2" column="0" colspan="2">
+                <widget class="QLabel" name="lblDetectedName">
+                 <property name="text">
+                  <string>Detected Name:</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="gbControlPanel">
+              <property name="title">
+               <string>Control Panel</string>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QPushButton" name="btnGetAccess">
+                 <property name="text">
+                  <string>Get Access</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnSaveFace">
+                 <property name="text">
+                  <string>Save Face</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnLockCheckpoint">
+                 <property name="text">
+                  <string>Lock Checkpoint</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnUnlockCheckpoint">
+                 <property name="text">
+                  <string>Unlock Checkpoint</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>
@@ -137,7 +145,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0" rowspan="2" colspan="2">
-         <widget class="QListView" name="lvVisitsLog"/>
+         <widget class="QListWidget" name="lvVisitsLog"/>
         </item>
        </layout>
       </widget>
@@ -170,7 +178,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>780</width>
+     <width>996</width>
      <height>21</height>
     </rect>
    </property>
@@ -215,7 +223,15 @@
      <addaction name="actionAddBbiometricsData"/>
      <addaction name="actionBackingUpData"/>
     </widget>
+    <widget class="QMenu" name="menuCheckpoints">
+     <property name="title">
+      <string>Checkpoints</string>
+     </property>
+     <addaction name="actionAddCheckpoint"/>
+     <addaction name="actionAddCamera"/>
+    </widget>
     <addaction name="menuData"/>
+    <addaction name="menuCheckpoints"/>
     <addaction name="menuSettings"/>
     <addaction name="menuAccounts"/>
    </widget>
@@ -291,6 +307,21 @@
   <action name="actionBackingUpData">
    <property name="text">
     <string>Backing up data</string>
+   </property>
+  </action>
+  <action name="actionAddCheckpoint">
+   <property name="text">
+    <string>Add checkpoint</string>
+   </property>
+  </action>
+  <action name="actionAddCamera">
+   <property name="text">
+    <string>Add camera</string>
+   </property>
+  </action>
+  <action name="actionDeleteCamera">
+   <property name="text">
+    <string>Delete camera</string>
    </property>
   </action>
  </widget>

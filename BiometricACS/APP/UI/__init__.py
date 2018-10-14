@@ -1,4 +1,4 @@
 from .WindowLoginPanel import Ui_wLoginPanel
-from .CameraDAE import Ui_WindowCameraDAE
+from .WidnowCreateCameraPanel import Ui_wCreateCameraPanel
 from .WindowCreateAccountPanel import Ui_wCreateAccountPanel
 from .WindowMain import Ui_MainWindow
