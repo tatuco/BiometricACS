@@ -34,7 +34,7 @@ address varchar not null
 create table camera(
 id serial primary key,
 vector cam_vector not null,
-device_name varchar not null unique,
+device_name varchar not null,
 ckpt_id integer not null references checkpoint(id)
 );
 
