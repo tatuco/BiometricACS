@@ -23,5 +23,5 @@ class DepartmentDTO(BaseDTO):
 
     def __init__(self, name=None, cheif_id=None):
         self._id = None
-        self._name=name
-        self._cheif_id=cheif_id
+        self._name = name
+        self._cheif_id = cheif_id

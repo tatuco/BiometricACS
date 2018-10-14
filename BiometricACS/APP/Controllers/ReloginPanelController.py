@@ -1,4 +1,6 @@
 from PyQt5 import QtCore
+from PyQt5.QtWidgets import QMessageBox
+
 from ..Views import ReloginPanelView
 from ..AppStart import program_logs
 from ...BLL import AccountDTO
@@ -19,6 +21,9 @@ class ReloginPanelController:
     def login_clicked(self):
         username = self.view.ui.tbUsername.text()
         password = self.view.ui.tbPassword.text()
+        if self.model.user.username == username and self.model.user.password == password:
+            QMessageBox.warning(self.view, 'Warning', 'You are already logged in to this account')
+            return
         self.model.user = AccountDTO(username, password)
 
     def cancel_clicked(self):
@@ -33,3 +38,5 @@ class ReloginPanelController:
             program_logs.relogin_log(user.username)
             self.view.parent_o.model_is_changed()
             self.view.close()
+        else:
+            QMessageBox.warning(self.view, 'Warning', 'The username or password you entered is incorrect')

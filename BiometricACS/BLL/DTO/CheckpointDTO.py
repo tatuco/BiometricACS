@@ -1,7 +1,7 @@
 from .BaseDTO import BaseDTO
 
 
-class ChekpointDTO(BaseDTO):
+class CheckpointDTO(BaseDTO):
 
     @property
     def address(self):
@@ -14,4 +14,4 @@ class ChekpointDTO(BaseDTO):
 
     def __init__(self, addess=None):
         self._id = None
-        self.address = addess
+        self._address = addess

@@ -23,16 +23,16 @@ class CameraDTO(BaseDTO):
             self._device_name = value
 
     @property
-    def chpt_id(self):
+    def ckpt_id(self):
         return self._ckpt_id
 
-    @chpt_id.setter
-    def chpt_id(self, value):
+    @ckpt_id.setter
+    def ckpt_id(self, value):
         if value > 0:
             self._ckpt_id = value
 
     def __init__(self, vector=None, device_name=None, ckpt_id=None):
         self._id = None
-        self._vector=vector
-        self._device_name=device_name
-        self._ckpt_id=ckpt_id
+        self._vector = vector
+        self._device_name = device_name
+        self._ckpt_id = ckpt_id

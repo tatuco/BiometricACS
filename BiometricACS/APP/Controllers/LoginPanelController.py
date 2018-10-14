@@ -1,8 +1,11 @@
 from PyQt5 import QtCore
+from PyQt5.QtWidgets import QMessageBox
+
 from ..Views import LoginPanelView
 from ...BLL.DTO import AccountDTO
 from ..AppStart import program_logs
 from ..Controllers import MainController
+from ..AppStart import program_settings
 from ...BLL.Services import MainService
 
 
@@ -35,8 +38,9 @@ class LoginPanelController:
         result, user = self.is_registred()
         if result:
             program_logs.login_log(user.username)
-
             self.view_close()
-            main_controller = MainController(MainService(user), self.view)
+            service = MainService(program_settings.connection_string, user)
+            main_controller = MainController(service, self.view)
         else:
+            QMessageBox.warning(self.view, 'Warning', 'The username or password you entered is incorrect')
             log = program_logs.bad_login_log(self.view.ui.tbUsername.text())

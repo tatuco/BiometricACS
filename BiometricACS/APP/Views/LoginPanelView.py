@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QWidget
+
 from . import MainView
+from .BaseView import BaseView
 from ..Utilities import Observer
 from ..UI import Ui_wLoginPanel
 from ..AppStart import program_logs
@@ -15,8 +17,10 @@ class LoginPanelView(QWidget, Observer):
         self.ui = Ui_wLoginPanel()
         self.ui.setupUi(self)
 
+        BaseView.setup_window_icon(self)
+
         self.ui.btnLogin.clicked.connect(self.controller.login_clicked)
-        self.ui.btnCancel.clicked.connect(self.controller.cancel_clicked)
+        self.ui.btnCancel.clicked.connect(self.close)
 
     def keyPressEvent(self, QKeyEvent):
         self.controller.enter_clicked(QKeyEvent)

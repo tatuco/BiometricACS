@@ -36,9 +36,9 @@ class BiometricsDTO(BaseDTO):
         if value > 0:
             self._emp_id = value
 
-    def __init__(self, original_imae=None, landmarks=None, features=None, emp_id=None):
+    def __init__(self, original_image=None, landmarks=None, features=None, emp_id=None):
         self._id = None
-        self._original_image = original_imae
+        self._original_image = original_image
         self._landmarks = landmarks
         self._features = features
         self._emp_id = emp_id
