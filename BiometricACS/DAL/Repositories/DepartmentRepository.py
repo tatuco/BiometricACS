@@ -9,13 +9,14 @@ from ..Interfaces.IRepository import IRepository
 class DepartmentRepository(BaseRepository):
 
     def __init__(self, context):
-        self.db = context
+        self._db = context
+        self._type = Department
 
     def get_all(self):
-        return self.db.Department.all()
+        return self._db.Department.all()
 
     def get(self, item_id):
-        return self.db.Department.filter(Department.id == item_id).first()
+        return self._db.Department.filter(Department.id == item_id).first()
 
     def find(self, predicate):
-        return self.db.Department.filter(*predicate).all()
+        return self._db.Department.filter(*predicate).all()

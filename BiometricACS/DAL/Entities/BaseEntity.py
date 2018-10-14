@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-class BaseEntity():
+class BaseEntity:
 
     @hybrid_property
     def id(self):

@@ -16,4 +16,3 @@ class EmployeeStatus(enum.Enum):
     trainees = 'trainees'
     vacation = 'vacation'
     dismissed = 'dismissed'
-        

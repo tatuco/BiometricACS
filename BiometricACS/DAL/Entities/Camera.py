@@ -5,12 +5,12 @@ from .BaseEntity import BaseEntity, Base
 from ..Entities.EnumModels import CamerasVector
 
 
-class Camera(Base):
+class Camera(Base, BaseEntity):
     __tablename__ = 'camera'
 
     _id = Column('id', INTEGER, primary_key=True)
     _vector = Column('vector', Enum(CamerasVector), nullable=False)
-    _device_name = Column('device_name', VARCHAR, unique=True)
+    _device_name = Column('device_name', VARCHAR)
     _ckpt_id = Column('ckpt_id', INTEGER, ForeignKey('checkpoint.id'), nullable=False)
 
     @hybrid_property

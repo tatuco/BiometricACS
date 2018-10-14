@@ -9,13 +9,14 @@ from ..Interfaces.IRepository import IRepository
 class VisitRepository(BaseRepository):
 
     def __init__(self, context):
-        self.db = context
+        self._db = context
+        self._type = Visit
 
     def get_all(self):
-        return self.db.Visit.all()
+        return self._db.Visit.all()
 
     def get(self, item_id):
-        return self.db.Visit.filter(Visit.id == item_id).first()
+        return self._db.Visit.filter(Visit.id == item_id).first()
 
     def find(self, predicate):
-        return self.db.Visit.filter(*predicate).all()
+        return self._db.Visit.filter(*predicate).all()

@@ -1,3 +1,5 @@
+from sqlalchemy import create_engine
+from sqlalchemy.exc import OperationalError, DBAPIError, ArgumentError
 from zope.interface import implementer, provider
 from . import *
 from ..Interfaces import IEntitiesUnit, IRepository
@@ -18,7 +20,7 @@ class EntitiesUnit(object):
 
     @property
     def camera_repository(self):
-        return IRepository(self._CamerasRepository)
+        return IRepository(self._CameraRepository)
 
     @property
     def checkpoint_repository(self):
@@ -31,6 +33,17 @@ class EntitiesUnit(object):
     @property
     def visit_repository(self):
         return IRepository(self._VisitRepository)
+    
+    @staticmethod
+    def is_valid_connection(connection_string):
+        try:
+            engine = create_engine(connection_string)
+            connection = engine.connect()
+            connection.close()
+        except (ArgumentError, OperationalError):
+            return False
+        else:
+            return True
 
     def __init__(self, connection_string):
         self._db = BacsDataContext(connection_string)

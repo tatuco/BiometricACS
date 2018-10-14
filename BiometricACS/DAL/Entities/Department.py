@@ -4,7 +4,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from .BaseEntity import BaseEntity, Base
 
 
-class Department(Base):
+class Department(Base, BaseEntity):
     __tablename__ = 'department'
 
     _id = Column('id', INTEGER, primary_key=True)

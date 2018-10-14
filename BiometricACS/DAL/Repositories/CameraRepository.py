@@ -9,13 +9,14 @@ from ..Interfaces.IRepository import IRepository
 class CameraRepository(BaseRepository):
 
     def __init__(self, context):
-        self.db = context
+        self._db = context
+        self._type = Camera
 
     def get_all(self):
-        return self.db.Camera.all()
+        return self._db.Camera.all()
 
     def get(self, item_id):
-        return self.db.Camera.filter(Camera.id == item_id).first()
+        return self._db.Camera.filter(Camera.id == item_id).first()
 
     def find(self, predicate):
-        return self.db.Camera.filter(*predicate).all()
+        return self._db.Camera.filter(*predicate).all()

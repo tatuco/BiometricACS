@@ -4,7 +4,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from .BaseEntity import BaseEntity, Base
 
 
-class Checkpoint(Base):
+class Checkpoint(Base, BaseEntity):
     __tablename__ = 'checkpoint'
 
     _id = Column('id', INTEGER, primary_key=True)

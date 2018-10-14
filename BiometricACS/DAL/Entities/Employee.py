@@ -5,7 +5,7 @@ from .BaseEntity import BaseEntity, Base
 from ..Entities.EnumModels import EmployeeStatus
 
 
-class Employee(Base):
+class Employee(Base, BaseEntity):
     __tablename__ = 'employee'
 
     _id = Column('id', INTEGER, primary_key=True)
