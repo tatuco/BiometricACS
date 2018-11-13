@@ -22,6 +22,7 @@ class CreateCameraPanelView(QDialog, Observer):
 
         self.ui.btnCancel.clicked.connect(self.close)
         self.ui.btnCreate.clicked.connect(self.controller.create_clicked)
+        self.ui.btnShowDevices.clicked.connect(self.controller.show_devices_clicked)
 
     def set_combobox_items(self, checkpoints, vectors):
         self.ui.cmbCheckpoint.addItems(checkpoints)

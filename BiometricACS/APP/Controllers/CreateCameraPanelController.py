@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QMessageBox
-import cv2
 
 from ..Views import CreateCameraPanelView
 from ..AppStart import program_logs
+from ..Subsystems import device_validator, get_device_list
 from ...BLL.DTO import CameraDTO, CamerasVectorDTO, CheckpointDTO
 
 
@@ -16,22 +16,25 @@ class CreateCameraPanelController:
 
         self.view.show()
 
+    def show_devices_clicked(self):
+        devices = ''
+        for device in get_device_list():
+            if not self.model.is_existing_device(device):
+                devices += device + '\n'
+        QMessageBox.information(self.view, 'Devices', 'Unused and currently connected video cameras: \n' + devices)
+
     def create_clicked(self):
         if self.view.ui.tbDevice == '':
             QMessageBox.warning(self.view, 'Warning', 'Enter the name or ip of device ')
             return
-        try:
-            device = self.view.ui.tbDevice.text()
-            #TODO device = Приведение к устройству
-            # if device.isdigit():
-            #     device = int(device)
 
-            capture = cv2.VideoCapture(int(device))
-            ret, frame = capture.read()
-            if not ret:
-                raise Exception()
-                
-        except Exception:
+        device = self.view.ui.tbDevice.text()
+
+        if self.model.is_existing_device(device):
+            QMessageBox.warning(self.view, 'Warning', 'Device already exists')
+            return
+
+        if not device_validator(device):
             QMessageBox.warning(self.view, 'Warning', 'Device not recognized')
             return
 

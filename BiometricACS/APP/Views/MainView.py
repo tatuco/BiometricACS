@@ -1,10 +1,12 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QMessageBox, QMenu, QAction, QTreeWidgetItem
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMainWindow, QWidget, QMessageBox, QMenu, QAction, QTreeWidgetItem, QGraphicsScene
+from PyQt5.QtCore import Qt, QRectF
+from PyQt5.QtGui import QImage, QPixmap
+import numpy as np
 
 from .BaseView import BaseView
 from ..Utilities import Observer
 from ..UI import Ui_MainWindow
-from ..AppStart import program_logs
+from ..AppStart import program_logs, program_settings
 
 
 class MainView(QMainWindow, Observer):
@@ -21,8 +23,12 @@ class MainView(QMainWindow, Observer):
 
         BaseView.setup_window_icon(self)
 
+        self.scence = QGraphicsScene()
+        # self.ui.gvFaceDetection(self.scence)
+
         self.ui.treeCameras.setContextMenuPolicy(Qt.CustomContextMenu)
         self.ui.treeCameras.customContextMenuRequested.connect(self.open_menu)
+        self.ui.treeCameras.itemClicked.connect(self.controller.selected_item_change)
 
         self.ui.actionRelogin.triggered.connect(self.controller.relogin_clicked)
         self.ui.actionExit.triggered.connect(self.close)
@@ -33,6 +39,8 @@ class MainView(QMainWindow, Observer):
         self.ui.actionAddCamera.triggered.connect(self.controller.add_camera_clicked)
 
     def open_menu(self, position):
+        if not self.controller.user_is_technical_engineer:
+            return
         menu = QMenu()
         treeItem = self.ui.treeCameras.itemAt(position)
         if not treeItem:
@@ -54,12 +62,26 @@ class MainView(QMainWindow, Observer):
                 menu.addAction(delete_camera)
         menu.exec_(self.ui.treeCameras.viewport().mapToGlobal(position))
 
+    def set_face_detection_image(self, image):
+        if not list(image):
+            self.set_default_images()
+            return
+        imgQ = QImage(image.data, image.shape[1], image.shape[0], QImage.Format_RGB888)
+        imgQ = imgQ.scaled(image.shape[1], image.shape[0], Qt.KeepAspectRatio)
+        pixMap = QPixmap.fromImage(imgQ)
+        self.ui.gvFaceDetection.setPixmap(pixMap)
+
+    def set_default_images(self):
+        f_d_default = np.full([480, 640], 255)
+        self.set_face_detection_image(f_d_default)
+
     def closeEvent(self, *args, **kwargs):
         event = args[0]
         close = QMessageBox().question(self, 'Close', 'You sure?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if close == QMessageBox.Yes:
             program_logs.close_log()
             event.accept()
+            self.controller.exit()
         else:
             event.ignore()
 

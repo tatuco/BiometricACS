@@ -3,6 +3,7 @@ from PyQt5.QtCore import Qt
 
 from ..Views import MainView, ReloginPanelView, FileDialogView
 from ..AppStart import program_logs, program_settings
+from ..Subsystems import CameraModel, MainLoop
 from ..Controllers.ReloginPanelController import ReloginPanelController
 from ..Controllers.CreateAccountPanelController import CreateAccountPanelController
 from ..Controllers.CreateCameraPanelController import CreateCameraPanelController
@@ -16,9 +17,15 @@ class MainController:
         self.model = in_model
         self.view = MainView(in_model, self, parent)
 
+        self.user_is_technical_engineer = None
         self.user_changed()
+
         program_logs.reset_handler(self.add_session_log)
-        self.initialize_checkpoints()
+
+        video_cameras = self.initialize_checkpoints()
+        face_detection_interceptor = self.view.set_face_detection_image
+        self.MainLoopVideoStream = MainLoop(video_cameras, program_logs, program_settings, face_detection_interceptor, None, None, None)
+        self.view.set_default_images()
 
         self.view.show()
 
@@ -27,12 +34,15 @@ class MainController:
         self.view.ui.menuSettings.setEnabled(is_technical_engineer)
         self.view.ui.actionCreateAccount.setEnabled(is_technical_engineer)
         self.view.ui.actionExport_Accounts.setEnabled(is_technical_engineer)
+        self.view.ui.menuCheckpoints.setEnabled(is_technical_engineer)
 
     def user_changed(self):
         if self.model.relogin_service.user.role == AccountRoleDTO.viewer:
-            self._update_ui_role(False)
+            self.user_is_technical_engineer = False
+            self._update_ui_role(self.user_is_technical_engineer)
         elif self.model.relogin_service.user.role == AccountRoleDTO.technical_engineer:
-            self._update_ui_role(True)
+            self.user_is_technical_engineer = True
+            self._update_ui_role(self.user_is_technical_engineer)
 
     def relogin_clicked(self):
         self.model.relogin_service = AuthorizationService(program_settings.connection_string, self.model.relogin_service.user)
@@ -88,15 +98,20 @@ class MainController:
 
     def initialize_checkpoints(self):
         self.view.ui.treeCameras.setHeaderLabels(['Device', 'Vector'])
-        cameras = self.model.checkpoints_service.cameras
+
+        cameras = []
+
         for checkpoint in self.model.checkpoints_service.checkpoints:
             top_item = self.create_checkpoint_item(checkpoint.address)
-            for camera in cameras:
+            for camera in self.model.checkpoints_service.cameras:
                 if camera.ckpt_id == checkpoint.id:
+                    cameras.append(CameraModel(camera.device_name, camera.vector, checkpoint.address))
                     child = self.create_camera_item(camera)
                     top_item.addChild(child)
             self.view.ui.treeCameras.addTopLevelItem(top_item)
         self.view.ui.treeCameras.resizeColumnToContents(0)
+
+        return cameras
 
     def add_checkpoint_clicked(self):
         text, ok = QInputDialog().getText(self.view, 'Checkpoint', 'Enter the address of the checkpoint:')
@@ -146,14 +161,17 @@ class MainController:
         camera.ckpt_id = self.model.checkpoints_service.find_checkpoint(address).id
         camera.vector = list(CamerasVectorDTO)[[i.value for i in list(CamerasVectorDTO)].index(selected_item.text(1))]
         camera.device_name = selected_item.text(0)
+
         self.model.checkpoints_service.delete_camera(camera)
+        self.MainLoopVideoStream.remove_camera(CameraModel(camera.device_name, camera.vector, address))
         self.remove_selected_item()
+
         program_logs.delete_camera_log(camera.device_name, camera.vector.value, address)
         QMessageBox.information(self.view, 'Success', 'Camera removed successfully')
 
     def delete_checkpoint_clicled(self):
         ckpt = self.model.checkpoints_service.find_checkpoint(self.view.ui.treeCameras.selectedItems()[0].text(0))
-        if self.model.checkpoints_service.count_of_cameras(ckpt.id)!=0:
+        if self.model.checkpoints_service.count_of_cameras(ckpt.id) != 0:
             QMessageBox.warning(self.view, 'Warning', 'At the selected checkpoint there are still cameras')
             return
 
@@ -175,3 +193,21 @@ class MainController:
         ckpt_item = self.view.ui.treeCameras.findItems(ckpt_address, Qt.MatchFixedString)[0]
         camera_item = self.create_camera_item(camera)
         ckpt_item.addChild(camera_item)
+        self.MainLoopVideoStream.add_camera(CameraModel(camera.device_name, camera.vector, ckpt_address))
+
+    def selected_item_change(self):
+        selected_item = self.view.ui.treeCameras.selectedItems()[0]
+        if selected_item.text(1) == '':
+            self.MainLoopVideoStream.set_selected_camera(None)
+            self.view.set_default_images()
+            self.view.set_default_images()
+            return
+        ckpt = selected_item.parent()
+        address = ckpt.text(0)
+        camera = CameraDTO()
+        camera.vector = list(CamerasVectorDTO)[[i.value for i in list(CamerasVectorDTO)].index(selected_item.text(1))]
+        camera.device_name = selected_item.text(0)
+        self.MainLoopVideoStream.set_selected_camera(CameraModel(camera.device_name, camera.vector, address))
+
+    def exit(self):
+        self.MainLoopVideoStream.stop()

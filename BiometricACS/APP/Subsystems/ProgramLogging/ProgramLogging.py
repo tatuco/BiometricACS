@@ -16,15 +16,15 @@ class ProgramLogging:
 
     def login_log(self, username):
         log = Log.get_login_log(self._printing, username)
-        self._execute(log, logging.INFO)
+        self._execute(log, 23)
 
     def relogin_log(self, username):
         log = Log.get_relogin_log(self._printing, username)
-        self._execute(log, logging.INFO)
+        self._execute(log, 23)
 
     def bad_login_log(self, username):
         log = Log.get_bad_login_log(self._printing, username)
-        self._execute(log, logging.INFO)
+        self._execute(log, logging.WARNING)
 
     def close_log(self):
         log = Log.get_close_log(self._printing)
@@ -32,11 +32,15 @@ class ProgramLogging:
 
     def visit_log(self, f_name, l_name, checkpoint):
         log = Log.get_visit_log(self._printing, f_name, l_name, checkpoint)
-        self._execute(log, logging.INFO)
+        self._execute(log, 23)
 
     def camera_turned_off_log(self, checkpoint, camera):
         log = Log.get_camera_turned_off_log(self._printing, checkpoint, camera)
         self._execute(log, logging.WARNING)
+
+    def camera_turned_on_log(self, checkpoint, camera):
+        log = Log.get_camera_turned_on_log(self._printing, checkpoint, camera)
+        self._execute(log, 27)
 
     def create_account_log(self, username):
         log = Log.get_create_account_log(self._printing, username)
@@ -44,7 +48,7 @@ class ProgramLogging:
 
     def export_accounts(self, file_name):
         log = Log.get_export_accounts_log(self._printing, file_name)
-        self._execute(log, logging.INFO)
+        self._execute(log, 27)
 
     def export_logs_log(self, file_name):
         log = Log.get_export_logs_log(self._printing, file_name)
@@ -52,15 +56,15 @@ class ProgramLogging:
 
     def add_checkpoint_log(self, address):
         log = Log.get_add_checkpoint_log(self._printing, address)
-        self._execute(log, logging.INFO)
+        self._execute(log, 27)
 
     def add_camera_log(self, device, vector, address):
         log = Log.get_add_camera_log(self._printing, device, vector, address)
-        self._execute(log, logging.INFO)
+        self._execute(log, 27)
 
     def change_checkpoint_address_log(self, old_address, new_address):
         log = Log.get_change_checkpoint_address_log(self._printing, old_address, new_address)
-        self._execute(log, logging.WARNING)
+        self._execute(log, 27)
 
     def delete_camera_log(self, device, vector, address):
         log = Log.get_delete_camera_log(self._printing, device, vector, address)
@@ -95,5 +99,7 @@ class ProgramLogging:
         self._printing = printing
         self._logs = []
         # self._formatter = logging.Formatter('%(levelname)s: %(asctime)s %(message)s')
+        logging.addLevelName(27, 'IMP_INFO')
+        logging.addLevelName(23, 'ACCESS')
         self._logger = logging.getLogger('BACS')
         self._logger.setLevel(logging.INFO)

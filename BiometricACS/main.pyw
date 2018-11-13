@@ -10,6 +10,12 @@ from BiometricACS.APP.Controllers import LoginPanelController
 import multiprocessing
 
 
+def exeption_hook(exctype, value, tracekack):
+    print(exctype, value, tracekack)
+    sys.__excepthook(exctype, value, tracekack)
+    sys.exit(1)
+
+
 def main():
     app = QApplication(sys.argv)
     setup_settings()
@@ -70,4 +76,6 @@ def setup_connection_string():
 
 
 if __name__ == '__main__':
+    sys.__excepthook = sys.excepthook
+    sys.excepthook = exeption_hook
     main()

@@ -45,6 +45,10 @@ class CheckpointService(BaseService):
         self._checkpoint_db.delete(ckpt)
         self._db.save()
 
+    def is_existing_device(self, device_name):
+        cameras = self._camera_db.find([Camera.device_name == device_name])
+        return True if cameras else False
+
     def count_of_cameras(self, ckpt_id):
         return len(self._camera_db.find([Camera.ckpt_id == ckpt_id]))
 

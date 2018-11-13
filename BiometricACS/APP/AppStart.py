@@ -4,4 +4,3 @@ from .Subsystems import ProgramLogging
 
 program_settings = Settings()
 program_logs = ProgramLogging(lambda x: x)
-

@@ -37,11 +37,12 @@ class Settings:
             repr_str += "')>"
         return repr_str
 
-    def __init__(self, settings_file='.\.\APP\Sources\Settings', backup_path=None, logs_path='.\.\APP\Sources\Logs', logs_saving=True, trust_factor=None, connection_string=None):
+    def __init__(self, settings_file='.\.\APP\Sources\Settings', backup_path=None, logs_path='.\.\APP\Sources\Logs', logs_saving=True, truth_factor=0.9, square_coef=0.7, connection_string=None):
         self.settings_file = settings_file
         self.backup_path = backup_path
         self.logs_path = logs_path
         self.logs_saving = logs_saving
-        self.trust_factor = trust_factor
+        self.truth_factor = truth_factor
+        self.square_coef = square_coef
         self.connection_string = connection_string
         self._cfg_path = '.\.\APP\Sources\Sys\cfg'
