@@ -23,9 +23,6 @@ class MainView(QMainWindow, Observer):
 
         BaseView.setup_window_icon(self)
 
-        self.scence = QGraphicsScene()
-        # self.ui.gvFaceDetection(self.scence)
-
         self.ui.treeCameras.setContextMenuPolicy(Qt.CustomContextMenu)
         self.ui.treeCameras.customContextMenuRequested.connect(self.open_menu)
         self.ui.treeCameras.itemClicked.connect(self.controller.selected_item_change)
@@ -44,20 +41,20 @@ class MainView(QMainWindow, Observer):
         menu = QMenu()
         treeItem = self.ui.treeCameras.itemAt(position)
         if not treeItem:
-            add_checkpoint = QAction('Add checkpoint', menu)
+            add_checkpoint = QAction(_('Add checkpoint'), menu)
             add_checkpoint.triggered.connect(self.controller.add_checkpoint_clicked)
             menu.addAction(add_checkpoint)
         else:
             if treeItem.text(1) == '':
-                add_camera = QAction('Add camera', menu)
+                add_camera = QAction(_('Add camera'), menu)
                 add_camera.triggered.connect(self.controller.add_camera_clicked)
-                change_address = QAction('Сhange address', menu)
+                change_address = QAction(_('Сhange address'), menu)
                 change_address.triggered.connect(self.controller.change_address_clicked)
-                delete_checkpoint = QAction('Delete checkpoint', menu)
+                delete_checkpoint = QAction(_('Delete checkpoint'), menu)
                 delete_checkpoint.triggered.connect(self.controller.delete_checkpoint_clicled)
                 menu.addActions([add_camera, change_address, delete_checkpoint])
             else:
-                delete_camera = QAction('Delete camera', menu)
+                delete_camera = QAction(_('Delete camera'), menu)
                 delete_camera.triggered.connect(self.controller.delete_camera_clicked)
                 menu.addAction(delete_camera)
         menu.exec_(self.ui.treeCameras.viewport().mapToGlobal(position))
@@ -77,7 +74,7 @@ class MainView(QMainWindow, Observer):
 
     def closeEvent(self, *args, **kwargs):
         event = args[0]
-        close = QMessageBox().question(self, 'Close', 'You sure?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        close = QMessageBox().question(self, _('Close'), _('You sure?'), QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if close == QMessageBox.Yes:
             program_logs.close_log()
             event.accept()

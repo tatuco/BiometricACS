@@ -1,13 +1,16 @@
 import sys
 import os
 import pickle
-from PyQt5 import QtGui
+import gettext
+import builtins
+from PyQt5 import QtGui, QtCore
+from PyQt5.Qt import QTranslator, QLocale
 from PyQt5.QtWidgets import QApplication, QInputDialog, QMessageBox, QWidget
+
 from BiometricACS.APP import *
 from BiometricACS.DAL import EntitiesUnit
 from BiometricACS.BLL.Services import AuthorizationService
 from BiometricACS.APP.Controllers import LoginPanelController
-import multiprocessing
 
 
 def exeption_hook(exctype, value, tracekack):
@@ -18,7 +21,13 @@ def exeption_hook(exctype, value, tracekack):
 
 def main():
     app = QApplication(sys.argv)
+
     setup_settings()
+
+    translator = setup_locale(program_settings.language)
+    app.installTranslator(translator)
+
+    program_logs.start_program_log()
     LoginPanelController(AuthorizationService(program_settings.connection_string))
     sys.exit(app.exec_())
 
@@ -51,8 +60,6 @@ def setup_settings():
     if not program_settings.connection_string:
         setup_connection_string()
 
-    program_logs.start_program_log()
-
 
 def setup_connection_string():
     dialog = QInputDialog()
@@ -73,6 +80,20 @@ def setup_connection_string():
                 quit()
     else:
         quit()
+
+
+def setup_locale(lang):
+    locale = '.\APP\Locale'
+    domain = 'messages'
+
+    t = gettext.translation(domain, locale, languages=[lang])
+    _ = t.gettext
+    builtins.__dict__['_'] = _
+    builtins.__dict__['gettext'] = builtins.__dict__['_']
+
+    translator = QTranslator()
+    translator.load(r"ui.qm", locale+r"\%s\LC_MESSAGES"%lang)
+    return translator
 
 
 if __name__ == '__main__':

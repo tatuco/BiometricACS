@@ -58,7 +58,7 @@ class MainController:
         with open(file_name, 'w') as f:
             for acc in self.model.accounts_service.accounts:
                 f.write(str(acc) + '\n')
-        QMessageBox.information(self.view, 'Success', 'Accounts successfully exported')
+        QMessageBox.information(self.view, _('Success'), _('Accounts successfully exported'))
         program_logs.export_accounts(file_name)
 
     def export_session_log_clicked(self):
@@ -68,7 +68,7 @@ class MainController:
         with open(file_name, 'w') as f:
             for log in program_logs.logs:
                 f.write(str(log) + '\n')
-            QMessageBox.information(self.view, 'Success', 'Session log successfully exported')
+            QMessageBox.information(self.view, _('Success'), _('Session log successfully exported'))
             program_logs.export_logs_log(file_name)
 
     def add_session_log(self, log):
@@ -114,18 +114,18 @@ class MainController:
         return cameras
 
     def add_checkpoint_clicked(self):
-        text, ok = QInputDialog().getText(self.view, 'Checkpoint', 'Enter the address of the checkpoint:')
+        text, ok = QInputDialog().getText(self.view, _('Checkpoint'), _('Enter the address of the checkpoint:'))
         if ok:
             if text != '':
                 if self.model.checkpoints_service.checkpoint_is_exist(text):
-                    QMessageBox.warning(self.view, 'Warning', 'Сheckpoint already exists')
+                    QMessageBox.warning(self.view, _('Warning'), _('Сheckpoint already exists'))
                 else:
                     self.model.checkpoints_service.add_checkpoint(text)
                     self.view.ui.treeCameras.addTopLevelItem(self.create_checkpoint_item(text))
                     program_logs.add_checkpoint_log(text)
-                    QMessageBox.information(self.view, 'Success', 'Сheckpoint successfully added')
+                    QMessageBox.information(self.view, _('Success'), _('Сheckpoint successfully added'))
             else:
-                QMessageBox.warning(self.view, 'Warning', 'Enter address')
+                QMessageBox.warning(self.view, _('Warning'), _('Enter address'))
 
     def add_camera_clicked(self):
         selected_checkpoint = self.view.ui.treeCameras.selectedItems()
@@ -137,21 +137,21 @@ class MainController:
     def change_address_clicked(self):
         selected_item = self.view.ui.treeCameras.selectedItems()[0]
         old_address = selected_item.text(0)
-        text, ok = QInputDialog().getText(self.view, 'Checkpoint', 'Enter the address of the checkpoint:', text=old_address)
+        text, ok = QInputDialog().getText(self.view, _('Checkpoint'), _('Enter the address of the checkpoint:'), text=old_address)
         if ok:
             if text != '':
                 if self.model.checkpoints_service.checkpoint_is_exist(text):
-                    QMessageBox.warning(self.view, 'Warning', 'Сheckpoint already exists')
+                    QMessageBox.warning(self.view, _('Warning'), _('Сheckpoint already exists'))
                 else:
                     self.model.checkpoints_service.edit_checkpoint(old_address, text)
                     selected_item.setText(0, text)
                     program_logs.change_checkpoint_address_log(old_address, text)
-                    QMessageBox.information(self.view, 'Success', 'Сheckpoint successfully changed')
+                    QMessageBox.information(self.view, _('Success'), _('Сheckpoint successfully changed'))
             else:
-                QMessageBox.warning(self.view, 'Warning', 'Enter address')
+                QMessageBox.warning(self.view, _('Warning'), _('Enter address'))
 
     def delete_camera_clicked(self):
-        remove = QMessageBox().question(self.view, 'Camera', 'Do you really want to remove the camera?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        remove = QMessageBox().question(self.view, _('Camera'), _('Do you really want to remove the camera?'), QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if remove == QMessageBox.No:
             return
         selected_item = self.view.ui.treeCameras.selectedItems()[0]
@@ -167,22 +167,22 @@ class MainController:
         self.remove_selected_item()
 
         program_logs.delete_camera_log(camera.device_name, camera.vector.value, address)
-        QMessageBox.information(self.view, 'Success', 'Camera removed successfully')
+        QMessageBox.information(self.view, _('Success'), _('Camera removed successfully'))
 
     def delete_checkpoint_clicled(self):
         ckpt = self.model.checkpoints_service.find_checkpoint(self.view.ui.treeCameras.selectedItems()[0].text(0))
         if self.model.checkpoints_service.count_of_cameras(ckpt.id) != 0:
-            QMessageBox.warning(self.view, 'Warning', 'At the selected checkpoint there are still cameras')
+            QMessageBox.warning(self.view, _('Warning'), _('At the selected checkpoint there are still cameras'))
             return
 
-        remove = QMessageBox().question(self.view, 'Camera', 'Do you really want to remove the checkpoint?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        remove = QMessageBox().question(self.view, _('Camera'), _('Do you really want to remove the checkpoint?'), QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if remove == QMessageBox.No:
             return
 
         self.model.checkpoints_service.delete_checkpoint(ckpt)
         self.remove_selected_item()
         program_logs.delete_checkpoint_log(ckpt.address)
-        QMessageBox.information(self.view, 'Success', 'Checkpoint removed successfully')
+        QMessageBox.information(self.view, _('Success'), _('Checkpoint removed successfully'))
 
     def remove_selected_item(self):
         root = self.view.ui.treeCameras.invisibleRootItem()

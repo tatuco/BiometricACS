@@ -42,5 +42,5 @@ class LoginPanelController:
             service = MainService(program_settings.connection_string, user)
             main_controller = MainController(service, self.view)
         else:
-            QMessageBox.warning(self.view, 'Warning', 'The username or password you entered is incorrect')
+            QMessageBox.warning(self.view, _('Warning'), _('The username or password you entered is incorrect'))
             log = program_logs.bad_login_log(self.view.ui.tbUsername.text())

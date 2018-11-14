@@ -16,22 +16,22 @@ class CreateAccountPanelController:
 
     def create_clicked(self):
         if self.view.ui.tbUsername.text() == '':
-            QMessageBox.warning(self.view, 'Warning', 'Enter username')
+            QMessageBox.warning(self.view, _('Warning'), _('Enter username'))
             return
         if self.model.is_exists(self.view.ui.tbUsername.text()):
-            QMessageBox.warning(self.view, 'Warning', 'Such account already exists')
+            QMessageBox.warning(self.view, _('Warning'), _('Such account already exists'))
             return
         if self.view.ui.tbPassword.text() == '':
-            QMessageBox.warning(self.view, 'Warning', 'Enter password')
+            QMessageBox.warning(self.view, _('Warning'), _('Enter password'))
             return
         if self.view.ui.tbPassword.text() != self.view.ui.tbConfirmPassword.text():
-            QMessageBox.warning(self.view, 'Warning', 'Passwords do not match')
+            QMessageBox.warning(self.view, _('Warning'), _('Passwords do not match'))
             return
         acc = AccountDTO()
         acc.username = self.view.ui.tbUsername.text()
         acc.role = list(AccountRoleDTO)[self.view.ui.cmbRole.currentIndex()]
         acc.password = self.view.ui.tbPassword.text()
         self.model.create_account(acc)
-        QMessageBox.information(self.view, 'Success', 'Account created successfully')
+        QMessageBox.information(self.view, _('Success'), _('Account created successfully'))
         self.view.close()
         program_logs.create_account_log(acc.username)

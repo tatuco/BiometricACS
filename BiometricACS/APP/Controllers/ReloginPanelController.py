@@ -22,7 +22,7 @@ class ReloginPanelController:
         username = self.view.ui.tbUsername.text()
         password = self.view.ui.tbPassword.text()
         if self.model.user.username == username and self.model.user.password == password:
-            QMessageBox.warning(self.view, 'Warning', 'You are already logged in to this account')
+            QMessageBox.warning(self.view, _('Warning'), _('You are already logged in to this account'))
             return
         self.model.user = AccountDTO(username, password)
 
@@ -39,4 +39,4 @@ class ReloginPanelController:
             self.view.parent_o.model_is_changed()
             self.view.close()
         else:
-            QMessageBox.warning(self.view, 'Warning', 'The username or password you entered is incorrect')
+            QMessageBox.warning(self.view, _('Warning'), _('The username or password you entered is incorrect'))
