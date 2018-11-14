@@ -8,7 +8,7 @@ class FileDialogView:
         dialog = QFileDialog()
         options = dialog.options()
         options |= dialog.DontUseCustomDirectoryIcons
-        file_name, _ = dialog.getSaveFileName(parent, _("Save"), '', filters, options=options )
+        file_name, res = dialog.getSaveFileName(parent, _('Save'), '', filters, options=options )
         return file_name
 
     @staticmethod

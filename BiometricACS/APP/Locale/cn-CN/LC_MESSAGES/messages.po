@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-11-14 13:14+0300\n"
+"PO-Revision-Date: 2018-11-15 00:23+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"X-Generator: Poedit 2.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: zh_CN\n"
+"X-Source-Language: C\n"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:19
+msgid "Enter username"
+msgstr "输入用户名"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:19
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:22
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:25
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:28
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:28
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:34
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:38
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\LoginPanelController.py:45
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:121
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:128
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:144
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:151
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:175
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\ReloginPanelController.py:25
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\ReloginPanelController.py:42
+msgid "Warning"
+msgstr "警告"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:22
+msgid "Such account already exists"
+msgstr "这样的帐户已经存在"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:25
+msgid "Enter password"
+msgstr "输入密码"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:28
+msgid "Passwords do not match"
+msgstr "密码不匹配"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:35
+msgid "Account created successfully"
+msgstr "帐户创建成功"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateAccountPanelController.py:35
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:47
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:61
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:71
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:126
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:149
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:170
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:185
+msgid "Success"
+msgstr "成功"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:24
+msgid "Devices"
+msgstr "设备"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:24
+msgid "Unused and currently connected video cameras: \n"
+msgstr "未使用和当前连接的摄像机：\n"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:28
+msgid "Enter the name or ip of device"
+msgstr "输入设备的名称或IP"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:34
+msgid "Device already exists"
+msgstr "设备已存在"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:38
+msgid "Device not recognized"
+msgstr "设备无法识别"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\CreateCameraPanelController.py:47
+msgid "Camera successfully added"
+msgstr "相机成功添加"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\LoginPanelController.py:45
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\ReloginPanelController.py:42
+msgid "The username or password you entered is incorrect"
+msgstr "您输入的用户名或密码不正确"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:61
+msgid "Accounts successfully exported"
+msgstr "帐户已成功导出"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:71
+msgid "Session log successfully exported"
+msgstr "会话日志已成功导出"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:117
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:140
+msgid "Checkpoint"
+msgstr "检查站"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:117
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:140
+msgid "Enter the address of the checkpoint:"
+msgstr "输入检查点的地址："
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:121
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:144
+msgid "Сheckpoint already exists"
+msgstr "检查点已经存在"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:126
+msgid "Сheckpoint successfully added"
+msgstr "检查点成功添加"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:128
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:151
+msgid "Enter address"
+msgstr "输入地址"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:149
+msgid "Сheckpoint successfully changed"
+msgstr "检查点已成功更改"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:154
+msgid "Do you really want to remove the camera?"
+msgstr "你真的想要取下相机吗？"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:154
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:178
+msgid "Camera"
+msgstr "相机"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:170
+msgid "Camera removed successfully"
+msgstr "相机已成功删除"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:175
+msgid "At the selected checkpoint there are still cameras"
+msgstr "在选定的检查站，仍然有摄像头"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:178
+msgid "Do you really want to remove the checkpoint?"
+msgstr "你真的想删除检查点吗？"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\MainController.py:185
+msgid "Checkpoint removed successfully"
+msgstr "检查点已成功删除"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\ReloginPanelController.py:25
+msgid "You are already logged in to this account"
+msgstr "您已登录此帐户"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:9
+msgid "Initialize program components"
+msgstr "初始化程序组件"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:17
+msgid "Login as '%s'"
+msgstr "登录为'%s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:24
+msgid "Relogin as '%s'"
+msgstr "重新定义为'％s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:31
+msgid "Failed login as '%s'"
+msgstr "登录失败为 '%s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:38
+msgid "The program has completed its work."
+msgstr "该计划已完成其工作。"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:45
+msgid "'%s %s' was given the access on '%s'"
+msgstr "'%s %s'获得了'％s'的访问权限"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:52
+msgid "Camera '%s' on '%s' turned off"
+msgstr "'％s'上的相机'％s'已关闭"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:59
+msgid "Camera '%s' has restored its work on '%s'"
+msgstr "相机'％s'已恢复其在'％s'上的工作"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:66
+msgid "Account '%s' created"
+msgstr "帐户'％s'已创建"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:73
+msgid "Export accounts to file '%s'"
+msgstr "将帐户导出到文件'％s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:80
+msgid "Export session log to file '%s'"
+msgstr "将会话日志导出到文件'％s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:87
+msgid "Added checkpoint '%s'"
+msgstr "添加了检查点'％s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:94
+msgid "Added device '%s' aimed at '%s' on '%s'"
+msgstr "在'％s'上添加了针对'％s'的设备'％s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:101
+msgid "Changed checkpoint address '%s' -> '%s'"
+msgstr "更改了检查点地址'％s' - >'％s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:108
+msgid "Camera removed: '%s' device, '%s' vector, on '%s'"
+msgstr "移除相机：'％s'设备，'％s'矢量，'％s'"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:115
+msgid "Checkpoint '%s' removed"
+msgstr "检查点'％s'已删除"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\FileDialogView.py:11
+msgid "Save"
+msgstr "保存"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\FileDialogView.py:16
+msgid "Log files (*.log )"
+msgstr "日志文件（* .log）"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\FileDialogView.py:20
+msgid "All Files (*)"
+msgstr "所有的文件 （*）"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\MainView.py:44
+msgid "Add checkpoint"
+msgstr "添加检查点"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\MainView.py:49
+msgid "Add camera"
+msgstr "添加相机"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\MainView.py:51
+msgid "Сhange address"
+msgstr "更换地址"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\MainView.py:53
+msgid "Delete checkpoint"
+msgstr "删除检查点"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\MainView.py:57
+msgid "Delete camera"
+msgstr "删除相机"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\MainView.py:77
+msgid "Close"
+msgstr "关"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Views\MainView.py:77
+msgid "You sure?"
+msgstr "你确定？"
