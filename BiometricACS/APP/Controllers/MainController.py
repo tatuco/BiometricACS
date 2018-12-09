@@ -7,7 +7,8 @@ from ..Subsystems import CameraModel, MainLoop
 from ..Controllers.ReloginPanelController import ReloginPanelController
 from ..Controllers.CreateAccountPanelController import CreateAccountPanelController
 from ..Controllers.CreateCameraPanelController import CreateCameraPanelController
-from ...BLL import AuthorizationService
+from ..Controllers.SettingsPanelController import SettingsPanelController
+from ...BLL import AuthorizationService, SettingsService
 from ...BLL.DTO import AccountDTO, AccountRoleDTO, CheckpointDTO, VisitDTO, CamerasVectorDTO, EmployeeStatusDTO, CameraDTO
 
 
@@ -169,7 +170,7 @@ class MainController:
         program_logs.delete_camera_log(camera.device_name, camera.vector.value, address)
         QMessageBox.information(self.view, _('Success'), _('Camera removed successfully'))
 
-    def delete_checkpoint_clicled(self):
+    def delete_checkpoint_clicked(self):
         ckpt = self.model.checkpoints_service.find_checkpoint(self.view.ui.treeCameras.selectedItems()[0].text(0))
         if self.model.checkpoints_service.count_of_cameras(ckpt.id) != 0:
             QMessageBox.warning(self.view, _('Warning'), _('At the selected checkpoint there are still cameras'))
@@ -208,6 +209,10 @@ class MainController:
         camera.vector = list(CamerasVectorDTO)[[i.value for i in list(CamerasVectorDTO)].index(selected_item.text(1))]
         camera.device_name = selected_item.text(0)
         self.MainLoopVideoStream.set_selected_camera(CameraModel(camera.device_name, camera.vector, address))
+
+    def open_settings_panel_clicked(self):
+        setting_service = SettingsService(program_settings)
+        SettingsPanelController(setting_service, self.view)
 
     def exit(self):
         self.MainLoopVideoStream.stop()

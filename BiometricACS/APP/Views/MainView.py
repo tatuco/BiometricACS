@@ -27,6 +27,9 @@ class MainView(QMainWindow, Observer):
         self.ui.treeCameras.customContextMenuRequested.connect(self.open_menu)
         self.ui.treeCameras.itemClicked.connect(self.controller.selected_item_change)
 
+        self.ui.menuSettings.removeAction(self.ui.actionExportSettings)
+        self.ui.menuSettings.removeAction(self.ui.actionImportSettings)
+
         self.ui.actionRelogin.triggered.connect(self.controller.relogin_clicked)
         self.ui.actionExit.triggered.connect(self.close)
         self.ui.actionCreateAccount.triggered.connect(self.controller.create_account_clicked)
@@ -34,6 +37,7 @@ class MainView(QMainWindow, Observer):
         self.ui.actionExportSessionLog.triggered.connect(self.controller.export_session_log_clicked)
         self.ui.actionAddCheckpoint.triggered.connect(self.controller.add_checkpoint_clicked)
         self.ui.actionAddCamera.triggered.connect(self.controller.add_camera_clicked)
+        self.ui.actionOpenSettings.triggered.connect(self.controller.open_settings_panel_clicked)
 
     def open_menu(self, position):
         if not self.controller.user_is_technical_engineer:
@@ -51,7 +55,7 @@ class MainView(QMainWindow, Observer):
                 change_address = QAction(_('Сhange address'), menu)
                 change_address.triggered.connect(self.controller.change_address_clicked)
                 delete_checkpoint = QAction(_('Delete checkpoint'), menu)
-                delete_checkpoint.triggered.connect(self.controller.delete_checkpoint_clicled)
+                delete_checkpoint.triggered.connect(self.controller.delete_checkpoint_clicked)
                 menu.addActions([add_camera, change_address, delete_checkpoint])
             else:
                 delete_camera = QAction(_('Delete camera'), menu)

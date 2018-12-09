@@ -2,3 +2,5 @@ from .WindowLoginPanel import Ui_wLoginPanel
 from .WidnowCreateCameraPanel import Ui_wCreateCameraPanel
 from .WindowCreateAccountPanel import Ui_wCreateAccountPanel
 from .WindowMain import Ui_MainWindow
+from .WindowSettingsPanel import Ui_WindowSettingsPanel
+

@@ -2,3 +2,4 @@ from .MainController import MainController
 from .LoginPanelController import LoginPanelController
 from .CreateAccountPanelController import CreateAccountPanelController
 from .ReloginPanelController import ReloginPanelController
+from .SettingsPanelController import SettingsPanelController

@@ -73,6 +73,14 @@ class ProgramLogging:
     def delete_checkpoint_log(self, address):
         log = Log.get_delete_checkpoint_log(self._printing, address)
         self._execute(log, logging.WARNING)
+        
+    def restart_log(self):
+        log = Log.get_restart_log(self._printing)
+        self._execute(log, logging.INFO)
+        
+    def change_settings_log(self):
+        log = Log.get_change_settings_log(self._printing)
+        self._execute(log, logging.WARNING)
 
     def save(self, save_path):
         with open(os.path.join(save_path, str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S')) + '.log'), 'w') as f:
@@ -81,7 +89,7 @@ class ProgramLogging:
 
     def set_log_file(self, save_path):
         logging.basicConfig(filename=os.path.join(save_path, str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S')) + '.log'))
-
+        
     def _execute(self, log, level):
         self._logger.log(level, log.event)
         self._logs.append(log)

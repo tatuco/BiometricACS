@@ -117,6 +117,20 @@ class Log:
             print(log)
         return log
 
+    @staticmethod
+    def get_restart_log(printing):
+        log = Log(datetime.now(), _('Restart'), LogLevels.INFO)
+        if printing:
+            print(log)
+        return log
+
+    @staticmethod
+    def get_change_settings_log(printing):
+        log = Log(datetime.now(), _('Сhange settings'), LogLevels.WARNING)
+        if printing:
+            print(log)
+        return log
+
     @property
     def date_time(self):
         return self._datetime

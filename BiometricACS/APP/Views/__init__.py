@@ -4,3 +4,5 @@ from .ReloginPanelView import ReloginPanelView
 from .CreateAccountPanelView import CreateAccountPanelView
 from .FileDialogView import FileDialogView
 from .CreateCameraPanelView import CreateCameraPanelView
+from .SettingsPanelView import SettingsPanelView
+
