@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-11-14 13:14+0300\n"
-"PO-Revision-Date: 2018-11-14 23:53+0300\n"
+"PO-Revision-Date: 2018-12-09 20:55+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -265,3 +265,89 @@ msgstr "Close"
 #: C:\Projects\BiometricACS\BiometricACS\APP\Views\MainView.py:77
 msgid "You sure?"
 msgstr "You sure?"
+
+#: C:\Projects\BiometricACS\BiometricACS\main.pyw:73
+msgid "Connection string"
+msgstr "Connection string"
+
+#: C:\Projects\BiometricACS\BiometricACS\main.pyw:73
+msgid "Enter the connection string to your database:"
+msgstr "Enter the connection string to your database:"
+
+#: C:\Projects\BiometricACS\BiometricACS\main.pyw:80
+msgid ""
+"\n"
+"Password:"
+msgstr ""
+"\n"
+"Password:"
+
+#: C:\Projects\BiometricACS\BiometricACS\main.pyw:80
+msgid ""
+"Successful creation of a new account!\n"
+"Login:"
+msgstr ""
+"Successful creation of a new account!\n"
+"Login:"
+
+#: C:\Projects\BiometricACS\BiometricACS\main.pyw:82
+msgid "Database successfully integrated, log in under one of the existing accounts"
+msgstr "Database successfully integrated, log in under one of the existing accounts"
+
+#: C:\Projects\BiometricACS\BiometricACS\main.pyw:84
+msgid ""
+"Database doesnt exists or username/password incorrect\n"
+"Try again?"
+msgstr ""
+"Database doesnt exists or username/password incorrect\n"
+"Try again?"
+
+#: C:\Projects\BiometricACS\BiometricACS\main.pyw:84
+msgid "Invalid connection"
+msgstr "Invalid connection"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\SettingsPanelController.py:45
+msgid "Incorrect paths to files or directories entered"
+msgstr "Incorrect paths to files or directories entered"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\SettingsPanelController.py:48
+msgid "Database doesnt exists or username/password incorrect"
+msgstr "Database doesnt exists or username/password incorrect"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\SettingsPanelController.py:53
+msgid ""
+"To apply the selected settings will require a restart.\n"
+"Restart the system?"
+msgstr ""
+"To apply the selected settings will require a restart.\n"
+"Restart the system?"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\SettingsPanelController.py:53
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:122
+msgid "Restart"
+msgstr "Restart"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\SettingsPanelController.py:60
+msgid ""
+"\n"
+"Restart canceled."
+msgstr ""
+"\n"
+"Restart canceled."
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\SettingsPanelController.py:60
+#: C:\Projects\BiometricACS\BiometricACS\main.pyw:63
+msgid ""
+"Settings file is damaged!\n"
+"Settings returned to their previous state."
+msgstr ""
+"Settings file is damaged!\n"
+"Settings returned to their previous state."
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Controllers\SettingsPanelController.py:78
+msgid "Settings successfully applied"
+msgstr "Settings successfully applied"
+
+#: C:\Projects\BiometricACS\BiometricACS\APP\Subsystems\ProgramLogging\Log.py:129
+msgid "Сhange settings"
+msgstr "Сhange settings"

@@ -50,8 +50,8 @@
     </message>
     <message>
         <location filename="../../../UI/WindowMain.py" line="213"/>
-        <source>Сheckpoints</source>
-        <translation>КПП</translation>
+        <source>?heckpoints</source>
+        <translation type="obsolete">КПП</translation>
     </message>
     <message>
         <location filename="../../../UI/WindowMain.py" line="224"/>
@@ -157,6 +157,89 @@
         <location filename="../../../UI/WindowMain.py" line="240"/>
         <source>Delete camera</source>
         <translation>Удалить камеру</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="213"/>
+        <source>Сheckpoints</source>
+        <translation>КПП</translation>
+    </message>
+</context>
+<context>
+    <name>WindowSettingsPanel</name>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="141"/>
+        <source>BACS Settings</source>
+        <translation>BACS Настройки</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="142"/>
+        <source>Settings file:</source>
+        <translation>Файл настроек:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="143"/>
+        <source>Setting_path</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="150"/>
+        <source>Browse</source>
+        <translation>Обзор</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="145"/>
+        <source>Backup directory:</source>
+        <translation>Папка резервного копирования:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="146"/>
+        <source>Backup_path</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="148"/>
+        <source>Logs directory:</source>
+        <translation>Папка логов:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="149"/>
+        <source>Logs_path</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="151"/>
+        <source>Log saving:</source>
+        <translation>Сохранять логи:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="152"/>
+        <source>Language:</source>
+        <translation>Язык:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="153"/>
+        <source>Truth factor:</source>
+        <translation>Степень доверия:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="154"/>
+        <source>Square coefficient:</source>
+        <translation>Коэффициент площади:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="155"/>
+        <source>Connection string:</source>
+        <translation>Строка подключения:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="156"/>
+        <source>Apply</source>
+        <translation>Применить</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowSettingsPanel.py" line="157"/>
+        <source>Cancel</source>
+        <translation>Выход</translation>
     </message>
 </context>
 <context>
