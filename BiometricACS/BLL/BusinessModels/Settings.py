@@ -25,6 +25,12 @@ class Settings:
             with open(self.settings_file, 'wb') as f:
                 pickle.dump(options, f)
 
+    def copy_settings_to_file(self, file_name):
+        previous_settings_file = self.settings_file
+        self.settings_file = os.path.abspath(file_name)
+        self.save()
+        self.settings_file = os.path.abspath(previous_settings_file)
+
     def restore(self):
         if self.settings_file:
             with open(self.settings_file, 'rb') as f:
@@ -86,7 +92,8 @@ class Settings:
             repr_str += "')>"
         return repr_str
 
-    def __init__(self, settings_file='.\.\APP\Sources\Settings.set', backup_path='.\.\APP\Sources\Backups', logs_path='.\.\APP\Sources\Logs', logs_saving=True, truth_factor=0.9, square_coef=0.7, connection_string='',
+    def __init__(self, settings_file='.\.\APP\Sources\Settings.set', backup_path='.\.\APP\Sources\Backups', logs_path='.\.\APP\Sources\Logs', logs_saving=True, truth_factor=0.9, square_coef=0.7,
+                 connection_string='',
                  language='ru-RU'):
         self.settings_file = os.path.abspath(settings_file)
         self.backup_path = os.path.abspath(backup_path)
