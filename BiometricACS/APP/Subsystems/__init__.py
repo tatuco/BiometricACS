@@ -1,4 +1,5 @@
 from .ProgramLogging import ProgramLogging
 from .VideoStreamInterception import device_validator, get_device_list
+from .VideoStreamProcessing import MAIN_IMAGE_DESIRED_DIMENSIONS, FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS, FACE_ALIGNMENT_IMAGE_DESIRED_DIMENSIONS
 from .MainLoop import MainLoop
 from .Models import CameraModel

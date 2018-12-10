@@ -4,20 +4,24 @@ from PyQt5.QtWidgets import QFileDialog
 class FileDialogView:
 
     @staticmethod
-    def _save_file_dialog(filters, parent):
+    def _save_file_dialog(filters, parent, base_directory):
         dialog = QFileDialog()
         options = dialog.options()
         options |= dialog.DontUseCustomDirectoryIcons
-        file_name, res = dialog.getSaveFileName(parent, _('Save'), '', filters, options=options)
+        file_name, res = dialog.getSaveFileName(parent, _('Save'), base_directory, filters, options=options)
         return file_name
 
     @staticmethod
-    def save_log_file_dialog(parent):
-        return FileDialogView._save_file_dialog(_("Log files (*.log )"), parent)
+    def save_log_file_dialog(parent, base_directory=''):
+        return FileDialogView._save_file_dialog(_("Log files (*.log )"), parent, base_directory)
 
     @staticmethod
-    def save_any_file_dialog(parent):
-        return FileDialogView._save_file_dialog(_("All Files (*)"), parent)
+    def save_any_file_dialog(parent, base_directory=''):
+        return FileDialogView._save_file_dialog(_("All Files (*)"), parent, base_directory)
+
+    @staticmethod
+    def save_settings_file_dialog(parent, base_directory=''):
+        return FileDialogView._save_file_dialog(_("Settings file (*.set)"), parent, base_directory)
 
     @staticmethod
     def open_any_directory_dialog(parent, base_directory=''):

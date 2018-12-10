@@ -7,6 +7,7 @@ from .BaseView import BaseView
 from ..Utilities import Observer
 from ..UI import Ui_MainWindow
 from ..AppStart import program_logs, program_settings
+from ..Subsystems import FACE_ALIGNMENT_IMAGE_DESIRED_DIMENSIONS, FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS, MAIN_IMAGE_DESIRED_DIMENSIONS
 
 
 class MainView(QMainWindow, Observer):
@@ -27,9 +28,6 @@ class MainView(QMainWindow, Observer):
         self.ui.treeCameras.customContextMenuRequested.connect(self.open_menu)
         self.ui.treeCameras.itemClicked.connect(self.controller.selected_item_change)
 
-        self.ui.menuSettings.removeAction(self.ui.actionExportSettings)
-        self.ui.menuSettings.removeAction(self.ui.actionImportSettings)
-
         self.ui.actionRelogin.triggered.connect(self.controller.relogin_clicked)
         self.ui.actionExit.triggered.connect(self.close)
         self.ui.actionCreateAccount.triggered.connect(self.controller.create_account_clicked)
@@ -38,6 +36,7 @@ class MainView(QMainWindow, Observer):
         self.ui.actionAddCheckpoint.triggered.connect(self.controller.add_checkpoint_clicked)
         self.ui.actionAddCamera.triggered.connect(self.controller.add_camera_clicked)
         self.ui.actionOpenSettings.triggered.connect(self.controller.open_settings_panel_clicked)
+        self.ui.actionExportSettings.triggered.connect(self.controller.export_settings_clicked)
 
     def open_menu(self, position):
         if not self.controller.user_is_technical_engineer:
@@ -65,16 +64,35 @@ class MainView(QMainWindow, Observer):
 
     def set_face_detection_image(self, image):
         if not list(image):
-            self.set_default_images()
+            self.set_default_images(MAIN_IMAGE_DESIRED_DIMENSIONS, f=self.set_face_detection_image)
             return
-        imgQ = QImage(image.data, image.shape[1], image.shape[0], QImage.Format_RGB888)
-        imgQ = imgQ.scaled(image.shape[1], image.shape[0], Qt.KeepAspectRatio)
-        pixMap = QPixmap.fromImage(imgQ)
+        pixMap = self.image_to_pixmap(image)
         self.ui.gvFaceDetection.setPixmap(pixMap)
 
-    def set_default_images(self):
-        f_d_default = np.full([480, 640], 255)
-        self.set_face_detection_image(f_d_default)
+    def set_landmarks_face_image(self, image):
+        if not list(image):
+            self.set_default_images(FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS, f=self.set_landmarks_face_image)
+            return
+        pixMap = self.image_to_pixmap(image)
+        self.ui.gvLandmarksDetection.setPixmap(pixMap)
+
+    def set_alignment_face_image(self, image):
+        if not list(image):
+            self.set_default_images(FACE_ALIGNMENT_IMAGE_DESIRED_DIMENSIONS, f=self.set_alignment_face_image)
+            return
+        pixMap = self.image_to_pixmap(image)
+        self.ui.gvFaceNormalization.setPixmap(pixMap)
+
+    def image_to_pixmap(self, image):
+        image = np.array(image.data).astype(np.uint8)
+        imgQ = QImage(image.data, image.shape[1], image.shape[0], QImage.Format_RGB888)
+        imgQ = imgQ.scaled(image.shape[1], image.shape[0], Qt.KeepAspectRatioByExpanding)
+        pixMap = QPixmap.fromImage(imgQ)
+        return pixMap
+
+    def set_default_images(self, size, f):
+        image = np.full(size, 255, dtype=np.int32)
+        f(image)
 
     def closeEvent(self, *args, **kwargs):
         event = args[0]

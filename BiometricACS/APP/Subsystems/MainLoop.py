@@ -4,19 +4,19 @@ from multiprocessing import Process
 from threading import Thread
 from queue import Queue, Empty
 import numpy as np
-import time
 
 from .VideoStreamInterception import device_validator
 from .VideoStreamInterception.DeviceValidator import DeviceChecker, device_index
 from .VideoStreamInterception.VideoSteamInterceptor import VideoSteamInterceptor
-from .VideoStreamProcessing import TensoflowFaceDector
+from .VideoStreamProcessing import TensoflowFaceDector, LandmarksPredictor, FaceAligner
+from .VideoStreamProcessing import FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS
 
 
 class VideoStream(Thread):
 
     def __init__(self, q_selected, q_lock, logger,
                  camera, device_index_getter,
-                 square_coef, trust_factor, biometrics_eq,
+                 settings, biometrics_eq,
                  image_faces_interceptor, image_landmarks_interceptor, image_alignment_interceptor,
                  employee_interceptor,
                  face_detector, landmarks_detector, face_alignmenter, biometrics_detector):
@@ -35,9 +35,8 @@ class VideoStream(Thread):
         self._device_index_getter = device_index_getter
         self._index = None
         self._capture = None
-        self._square_coef = square_coef
+        self._settings = settings
         self._biometrics_eq = biometrics_eq
-        self._trust_factor = trust_factor
 
         self._image = []
         self._image_faces = []
@@ -45,7 +44,7 @@ class VideoStream(Thread):
         self._image_alignment = []
 
         self._face_detector = face_detector
-        self._landmarks_detector = landmarks_detector
+        self._landmarks_predictor = landmarks_detector
         self._face_alignmenter = face_alignmenter
         self._biometrics_detector = biometrics_detector
 
@@ -86,19 +85,23 @@ class VideoStream(Thread):
             self._q_lock.task_done()
 
     def run(self):
+        face_desired_height = FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS[0]
 
         while self._available:
+
             self.index_checker()
             self.selected_checker()
             if self._index == -1:
                 if self._is_selected:
                     self._image_faces_interceptor([])
+                    self._image_landmarks_interceptor([])
+                    self._image_alignment_interceptor([])
                 continue
 
             try:
                 ret, self._image = self._capture.read()
-            except:
-                break
+            except Exception:
+                continue
 
             if not ret:
                 old_ind = self._index
@@ -113,20 +116,26 @@ class VideoStream(Thread):
             self._image_faces, face, square_coef = self._face_detector.run(self._image)
             if self._is_selected:
                 self._image_faces_interceptor(cv2.cvtColor(self._image_faces, cv2.COLOR_BGR2RGB))
+            if square_coef < self._settings.square_coef:
+                self._image_landmarks_interceptor([])
+                self._image_alignment_interceptor([])
+                continue
 
-            continue
+            if face is list:
+                continue
 
-            # if square_coef < self._square_coef:
-            #     continue
-            #
-            # self._image_landmarks, landmarks = self._landmarks_detector(face)
-            # if self._is_selected:
-            #     self._image_landmarks_interceptor(self._image_landmarks)
-            #
-            # self._image_alignment = self._face_alignmenter()
-            # if self._is_selected:
-            #     self._image_alignment_interceptor(self._image_alignment)
-            #
+            self._image_landmarks, landmarks = self._landmarks_predictor.run(face)
+            thumbnail_image_shape = face_desired_height, int(face_desired_height / face.shape[1] * face.shape[0])
+            if self._is_selected:
+                thumbnail_image_landmarks = cv2.resize(self._image_landmarks, thumbnail_image_shape, interpolation=cv2.INTER_LINEAR)
+                self._image_landmarks_interceptor(thumbnail_image_landmarks)
+
+            self._image_alignment = self._face_alignmenter.run(face, landmarks)
+            if self._is_selected:
+                thumbnail_image_alignment = cv2.resize(self._image_alignment, thumbnail_image_shape, interpolation=cv2.INTER_LINEAR)
+                self._image_alignment_interceptor(thumbnail_image_alignment)
+
+
             # self.lock_checker()
             # if self._is_locked:
             #     continue
@@ -201,12 +210,12 @@ class MainLoop:
         self._q_lock.append(q_lock)
 
         face_detector = self._face_detector
-        landmarks_detector = None
-        face_alignmenter = None
+        landmarks_detector = self._landmarks_predictor
+        face_alignmenter = FaceAligner()
         biometrics_detector = None
 
         proc = VideoStream(q_selected, q_lock, self._program_logs, camera,
-                           device_index, self._square_coef, self._truth_factor, self._biometrics_eq,
+                           device_index, self._settings, self._biometrics_eq,
                            self._faces_interceptor, self._landmarks_interceptor,
                            self._aligment_interceptor, self._employee_interceptor,
                            face_detector, landmarks_detector, face_alignmenter, biometrics_detector)
@@ -221,8 +230,7 @@ class MainLoop:
         self._q_lock = []
 
         self._program_logs = program_logs
-        self._square_coef = program_setting.square_coef
-        self._truth_factor = program_setting.truth_factor
+        self._settings = program_setting
         self._biometrics_eq = None
 
         self._faces_interceptor = faces_interceptor
@@ -231,6 +239,7 @@ class MainLoop:
         self._employee_interceptor = employee_interceptor
 
         self._face_detector = TensoflowFaceDector()
+        self._landmarks_predictor = LandmarksPredictor()
 
         self._device_checker = DeviceChecker()
         self._device_checker.start()

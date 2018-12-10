@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 from ..Views import MainView, ReloginPanelView, FileDialogView
 from ..AppStart import program_logs, program_settings
 from ..Subsystems import CameraModel, MainLoop
+from ..Subsystems import FACE_ALIGNMENT_IMAGE_DESIRED_DIMENSIONS, FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS, MAIN_IMAGE_DESIRED_DIMENSIONS
 from ..Controllers.ReloginPanelController import ReloginPanelController
 from ..Controllers.CreateAccountPanelController import CreateAccountPanelController
 from ..Controllers.CreateCameraPanelController import CreateCameraPanelController
@@ -25,8 +26,12 @@ class MainController:
 
         video_cameras = self.initialize_checkpoints()
         face_detection_interceptor = self.view.set_face_detection_image
-        self.MainLoopVideoStream = MainLoop(video_cameras, program_logs, program_settings, face_detection_interceptor, None, None, None)
-        self.view.set_default_images()
+        landmarks_face_interceptor = self.view.set_landmarks_face_image
+        normal_face_interceprot = self.view.set_alignment_face_image
+        self.MainLoopVideoStream = MainLoop(video_cameras, program_logs, program_settings, face_detection_interceptor, landmarks_face_interceptor, normal_face_interceprot, None)
+        self.view.set_default_images(MAIN_IMAGE_DESIRED_DIMENSIONS, f=self.view.set_face_detection_image)
+        self.view.set_default_images(FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS, f=self.view.set_landmarks_face_image)
+        self.view.set_default_images(FACE_ALIGNMENT_IMAGE_DESIRED_DIMENSIONS, f=self.view.set_alignment_face_image)
 
         self.view.show()
 
@@ -200,8 +205,10 @@ class MainController:
         selected_item = self.view.ui.treeCameras.selectedItems()[0]
         if selected_item.text(1) == '':
             self.MainLoopVideoStream.set_selected_camera(None)
-            self.view.set_default_images()
-            self.view.set_default_images()
+            for _ in range(2):
+                self.view.set_default_images([480, 640, 3], f=self.view.set_face_detection_image)
+                self.view.set_default_images([180, 180, 3], f=self.view.set_landmarks_face_image)
+                self.view.set_default_images([180, 180, 3], f=self.view.set_alignment_face_image)
             return
         ckpt = selected_item.parent()
         address = ckpt.text(0)
@@ -213,6 +220,12 @@ class MainController:
     def open_settings_panel_clicked(self):
         setting_service = SettingsService(program_settings)
         SettingsPanelController(setting_service, self.view)
+
+    def export_settings_clicked(self):
+        save_file = FileDialogView.save_settings_file_dialog(self.view, program_settings.settings_file)
+        if save_file == '':
+            return
+        program_settings.copy_settings_to_file(save_file)
 
     def exit(self):
         self.MainLoopVideoStream.stop()

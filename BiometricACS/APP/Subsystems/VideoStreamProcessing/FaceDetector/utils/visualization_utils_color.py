@@ -14,6 +14,7 @@ def visualize_boxes_and_labels_on_image_array(image, boxes, classes, scores, cat
                                               max_boxes_to_draw=20, min_score_thresh=.7, agnostic_mode=False, line_thickness=4):
     box_to_display_str_map = collections.defaultdict(list)
     box_to_color_map = collections.defaultdict(str)
+    items = box_to_color_map.items()
     box_to_instance_masks_map = {}
     box_to_keypoints_map = collections.defaultdict(list)
     if not max_boxes_to_draw:
@@ -41,12 +42,25 @@ def visualize_boxes_and_labels_on_image_array(image, boxes, classes, scores, cat
                 box_to_display_str_map[box].append(display_str)
                 box_to_color_map[box] = (238, 130, 238)
 
-    for box, color in box_to_color_map.items():
+    max_face = []
+    max_volume = 0
+    image = np.asanyarray(image)
+    image_np = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+    rgb_image = np.asanyarray(image_np)
+    for box, color in items:
         ymin, xmin, ymax, xmax = box
         ymin, xmin, ymax, xmax = int(ymin * image.shape[0]), int(xmin * image.shape[1]), int(ymax * image.shape[0]), int(xmax * image.shape[1])
         cv2.rectangle(image, (xmin, ymin), (xmax, ymax), color, 3)
 
-        text = box_to_display_str_map[box][0]
+        face = rgb_image[ymin:ymax, xmin:xmax]
+        if (ymax - ymin) * (xmax - xmin) > max_volume:
+            max_volume = (ymax - ymin) * (xmax - xmin)
+            max_face = face
+
+        square_coef = max_volume / (image.shape[0] * image.shape[1])
+        square_coef = round(square_coef, 5)
+        text = f'sq_c: {square_coef}'
         font_face = cv2.LINE_AA
         font_scale = 1
         thickness = 2
@@ -54,4 +68,6 @@ def visualize_boxes_and_labels_on_image_array(image, boxes, classes, scores, cat
         text_width, text_height = cv2.getTextSize(text, font_face, font_scale, thickness)[0]
         cv2.rectangle(image, (xmin-3, ymin-text_height), (xmin+text_width, ymin), color, -1)
         cv2.putText(image, text, (xmin, ymin - thickness), font_face, font_scale, (0, 0, 0), thickness, cv2.LINE_AA)
-    return box_to_color_map.items()
+
+    square_coef = max_volume / (image.shape[0] * image.shape[1])
+    return image, max_face, square_coef

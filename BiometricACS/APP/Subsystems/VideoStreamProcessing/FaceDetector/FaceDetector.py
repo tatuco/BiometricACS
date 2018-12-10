@@ -2,11 +2,9 @@ import os
 import cv2
 import numpy as np
 import tensorflow as tf
-from time import time
 
 from .utils import label_map_util
 from .utils import visualization_utils_color as vis_util
-
 
 PATH_TO_CKPT = os.path.join(os.path.dirname(__file__), 'model/frozen_inference_graph_face.pb')
 PATH_TO_LABELS = os.path.join(os.path.dirname(__file__), 'protos/face_label_map.pbtxt')
@@ -43,14 +41,10 @@ class TensoflowFaceDector(object):
 
     def run(self, image):
         image_np = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        rgb_image = np.asanyarray(image_np)
         image_np_expanded = np.expand_dims(image_np, axis=0)
-
-        t = time()
-        (boxes, scores, classes, num_detections) = self.sess.run(
-            [self.boxes, self.scores, self.classes, self.num_detections],
+        (boxes, scores, classes, num_detections) = self.sess.run([self.boxes, self.scores, self.classes, self.num_detections],
             feed_dict={self.image_tensor: image_np_expanded})
-        items = vis_util.visualize_boxes_and_labels_on_image_array(
+        image, max_face, square_coef = vis_util.visualize_boxes_and_labels_on_image_array(
             image,
             np.squeeze(boxes),
             np.squeeze(classes).astype(np.int32),
@@ -59,19 +53,4 @@ class TensoflowFaceDector(object):
             use_normalized_coordinates=True,
             line_thickness=1)
 
-
-        max_face = []
-        max_volume = 0
-        if items:
-            image = np.asanyarray(image)
-            for item in items:
-                ymin, xmin, ymax, xmax = item[0]
-                ymin, xmin, ymax, xmax = int(ymin * image.shape[0]), int(xmin * image.shape[1]), int(ymax * image.shape[0]), int(xmax * image.shape[1])
-
-                face = rgb_image[ymin:ymax, xmin:xmax]
-                if (ymax - ymin) * (xmax - xmin) > max_volume:
-                    max_volume = (ymax - ymin) * (xmax - xmin)
-                    max_face = face
-
-        square_coef = max_volume/(image.shape[0]*image.shape[1])
         return image, max_face, square_coef

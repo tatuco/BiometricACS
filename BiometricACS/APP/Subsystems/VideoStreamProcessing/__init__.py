@@ -1,1 +1,4 @@
 from .FaceDetector.FaceDetector import TensoflowFaceDector
+from .LandmarksPredictor.LandmarksPredictor import LandmarksPredictor
+from .FaceAligner.FaceAligner import FaceAligner
+from .FaceInformation import FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS, MAIN_IMAGE_DESIRED_DIMENSIONS, FACE_ALIGNMENT_IMAGE_DESIRED_DIMENSIONS
