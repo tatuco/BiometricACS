@@ -19,14 +19,14 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabPresenter">
       <property name="autoFillBackground">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabCheckpoints">
        <property name="autoFillBackground">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <attribute name="title">
         <string>Сheckpoints</string>
@@ -34,6 +34,12 @@
        <layout class="QGridLayout" name="gridLayout_6">
         <item row="0" column="0">
          <widget class="QSplitter" name="splitter_4">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -166,22 +172,282 @@
        </layout>
       </widget>
       <widget class="QWidget" name="tabStatistics">
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
        <attribute name="title">
         <string>Statistics</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
-         <widget class="QLineEdit" name="tbSearchName"/>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="btnSaveStatistics">
-          <property name="text">
-           <string>Save</string>
+         <widget class="QSplitter" name="splitter_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,1,0">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetMaximumSize</enum>
+            </property>
+            <item>
+             <layout class="QFormLayout" name="formLayout">
+              <property name="labelAlignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="horizontalSpacing">
+               <number>20</number>
+              </property>
+              <property name="verticalSpacing">
+               <number>6</number>
+              </property>
+              <property name="leftMargin">
+               <number>5</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="rightMargin">
+               <number>5</number>
+              </property>
+              <property name="bottomMargin">
+               <number>5</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="lblDepartment">
+                <property name="text">
+                 <string>Department:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="cmb_department"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="lblCheif">
+                <property name="text">
+                 <string>Chief:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="lbl_chief">
+                <property name="autoFillBackground">
+                 <bool>true</bool>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="lblFirstName">
+                <property name="text">
+                 <string>First name:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="tb_first_name"/>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="lblLastName">
+                <property name="text">
+                 <string>Last name:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="tb_last_name"/>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="lblCheckpoint">
+                <property name="text">
+                 <string>Checkpoint:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QComboBox" name="cmb_checkpoint"/>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="lblEvent">
+                <property name="text">
+                 <string>Event:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QComboBox" name="cmb_event"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QFormLayout" name="formLayout_2">
+              <property name="labelAlignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="horizontalSpacing">
+               <number>10</number>
+              </property>
+              <property name="leftMargin">
+               <number>5</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="rightMargin">
+               <number>5</number>
+              </property>
+              <property name="bottomMargin">
+               <number>5</number>
+              </property>
+              <item row="0" column="0" colspan="2">
+               <widget class="QRadioButton" name="rbtn_considering_time">
+                <property name="text">
+                 <string>Considering time</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="lblStartDate">
+                <property name="text">
+                 <string>Start date:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="lbl_start_date">
+                <property name="autoFillBackground">
+                 <bool>true</bool>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="lblStopDate">
+                <property name="text">
+                 <string>Stop date:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="lbl_stop_date">
+                <property name="autoFillBackground">
+                 <bool>true</bool>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QCalendarWidget" name="wgt_calendar">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>7</pointsize>
+               </font>
+              </property>
+              <property name="gridVisible">
+               <bool>true</bool>
+              </property>
+              <property name="selectionMode">
+               <enum>QCalendarWidget::SingleSelection</enum>
+              </property>
+              <property name="verticalHeaderFormat">
+               <enum>QCalendarWidget::NoVerticalHeader</enum>
+              </property>
+              <property name="navigationBarVisible">
+               <bool>true</bool>
+              </property>
+              <property name="dateEditEnabled">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,5,0,0">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout">
+                <item>
+                 <widget class="QLabel" name="lblFountRecors">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Found records:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lbl_found_records">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_search_statistics">
+                <property name="text">
+                 <string>Search</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_clear">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Clear</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_save_statistict">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Save</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="tableStatistics"/>
+            </item>
+           </layout>
+          </widget>
          </widget>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QTableWidget" name="tableStatistics"/>
         </item>
        </layout>
       </widget>
@@ -329,7 +595,6 @@
   <tabstop>btnGetAccess</tabstop>
   <tabstop>btnLockCheckpoint</tabstop>
   <tabstop>btnUnlockCheckpoint</tabstop>
-  <tabstop>tabPresenter</tabstop>
   <tabstop>lvVisitsLog</tabstop>
  </tabstops>
  <resources/>

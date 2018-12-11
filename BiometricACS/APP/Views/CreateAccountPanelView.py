@@ -21,7 +21,7 @@ class CreateAccountPanelView(QDialog, Observer):
         BaseView.setup_window_icon(self)
 
         self.ui.btnCancel.clicked.connect(self.close)
-        self.ui.btnCreate.clicked.connect(self.close)
+        self.ui.btnCreate.clicked.connect(self.controller.create_clicked)
 
     def set_combobox_items(self, items):
         self.ui.cmbRole.addItems(items)

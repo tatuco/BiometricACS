@@ -16,7 +16,7 @@ dept_id integer references department(id)
 );
 
 alter table department
-add column cheif_id integer not null references employee(id);
+add column chief_id integer not null references employee(id);
 
 create table biometrics(
 id serial primary key,

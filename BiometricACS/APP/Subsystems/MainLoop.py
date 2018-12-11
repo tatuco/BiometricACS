@@ -1,9 +1,9 @@
 import threading
 import cv2
+import numpy as np
 from multiprocessing import Process
 from threading import Thread
 from queue import Queue, Empty
-import numpy as np
 
 from .VideoStreamInterception import device_validator
 from .VideoStreamInterception.DeviceValidator import DeviceChecker, device_index

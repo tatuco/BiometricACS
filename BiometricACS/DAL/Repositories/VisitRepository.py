@@ -1,4 +1,5 @@
 from zope.interface import implements, implementer, classImplements, provider
+
 from .BaseRepository import BaseRepository
 from ..Entities.Visit import Visit
 from ..Interfaces.IRepository import IRepository

@@ -6,4 +6,3 @@ from .DepartmentRepository import DepartmentRepository, Department
 from .EmployeeRepository import EmployeeRepository, Employee
 from .VisitRepository import VisitRepository, Visit
 from .EntitiesUnit import EntitiesUnit
-

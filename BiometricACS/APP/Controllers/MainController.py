@@ -1,3 +1,4 @@
+from datetime import datetime
 from PyQt5.QtWidgets import QListWidgetItem, QMessageBox, QTreeWidgetItem, QInputDialog
 from PyQt5.QtCore import Qt
 
@@ -10,7 +11,7 @@ from ..Controllers.CreateAccountPanelController import CreateAccountPanelControl
 from ..Controllers.CreateCameraPanelController import CreateCameraPanelController
 from ..Controllers.SettingsPanelController import SettingsPanelController
 from ...BLL import AuthorizationService, SettingsService
-from ...BLL.DTO import AccountDTO, AccountRoleDTO, CheckpointDTO, VisitDTO, CamerasVectorDTO, EmployeeStatusDTO, CameraDTO
+from ...BLL.DTO import AccountDTO, AccountRoleDTO, CheckpointDTO, VisitDTO, CamerasVectorDTO, EmployeeStatusDTO, CameraDTO, EventVisitDTO
 
 
 class MainController:
@@ -32,6 +33,12 @@ class MainController:
         self.view.set_default_images(MAIN_IMAGE_DESIRED_DIMENSIONS, f=self.view.set_face_detection_image)
         self.view.set_default_images(FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS, f=self.view.set_landmarks_face_image)
         self.view.set_default_images(FACE_ALIGNMENT_IMAGE_DESIRED_DIMENSIONS, f=self.view.set_alignment_face_image)
+
+        events = ['---']
+        events.extend([i.value for i in EventVisitDTO])
+        self.view.set_visit_events(events)
+        self.reset_statistict_enums()
+        self.clear_statistics_clicked()
 
         self.view.show()
 
@@ -61,9 +68,7 @@ class MainController:
         file_name = FileDialogView.save_any_file_dialog(self.view)
         if file_name == '':
             return
-        with open(file_name, 'w') as f:
-            for acc in self.model.accounts_service.accounts:
-                f.write(str(acc) + '\n')
+        self.model.accounts_service.export_accounts(file_name)
         QMessageBox.information(self.view, _('Success'), _('Accounts successfully exported'))
         program_logs.export_accounts(file_name)
 
@@ -187,6 +192,7 @@ class MainController:
 
         self.model.checkpoints_service.delete_checkpoint(ckpt)
         self.remove_selected_item()
+        self.reset_statistict_enums()
         program_logs.delete_checkpoint_log(ckpt.address)
         QMessageBox.information(self.view, _('Success'), _('Checkpoint removed successfully'))
 
@@ -226,6 +232,52 @@ class MainController:
         if save_file == '':
             return
         program_settings.copy_settings_to_file(save_file)
+
+    def reset_statistict_enums(self):
+        dept_names = self.model.statistics_service.get_departments()
+        ckpt_address = self.model.statistics_service.get_checkpoints()
+        self.view.set_statistics_enums(dept_names, ckpt_address)
+
+    def department_change(self):
+        dept_name = self.view.ui.cmb_department.currentText()
+        chief_name = self.model.statistics_service.get_chief(dept_name)
+        self.view.ui.lbl_chief.setText(chief_name)
+
+    def search_statistics_clicked(self):
+        date_format = '%Y-%m-%d'
+        start_date = self.view.ui.lbl_start_date.text()
+        stop_date = self.view.ui.lbl_stop_date.text()
+        if start_date and not stop_date:
+            stop_date = start_date
+        elif not start_date and stop_date:
+            start_date = stop_date
+        elif not stop_date and not stop_date:
+            start_date = None
+            stop_date = None
+        else:
+            start_date = datetime.strptime(start_date, date_format).date()
+            stop_date = datetime.strptime(stop_date, date_format).date()
+
+        dept_name = self.view.ui.cmb_department.currentText()
+        first_name = self.view.ui.tb_first_name.text()
+        last_name = self.view.ui.tb_last_name.text()
+        ckpt = self.view.ui.cmb_checkpoint.currentText()
+        event = self.view.ui.cmb_event.currentText()
+        considering_time = self.view.ui.rbtn_considering_time.isChecked()
+        result, count = self.model.statistics_service.search_visits(dept_name, first_name, last_name, ckpt, event, considering_time, start_date, stop_date)
+        self.view.set_found_visits(result, count)
+
+    def clear_statistics_clicked(self):
+        self.view.clear_statistics_parameters()
+        result, count = self.model.statistics_service.get_all_visits()
+        self.view.set_found_visits(result, count)
+
+    def save_statistics_clicked(self):
+        file = FileDialogView.save_any_file_dialog(self.view)
+        if file:
+            self.model.statistics_service.save_statistics(file)
+            QMessageBox.information(self.view, _('Success'), _('Statistics successfully saved'))
+            program_logs.save_statistics_log(file)
 
     def exit(self):
         self.MainLoopVideoStream.stop()

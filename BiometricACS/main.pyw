@@ -16,6 +16,7 @@ from BiometricACS.APP.Views.BaseView import BaseView
 
 APP = QApplication(sys.argv)
 
+
 def exeption_hook(exctype, value, tracekack):
     print(exctype, value, tracekack)
     sys.__excepthook(exctype, value, tracekack)
@@ -41,10 +42,6 @@ def setup_settings():
 
     with open(program_settings.cfg_file, 'rb') as f:
         program_settings.settings_file = pickle.load(f)
-
-    if not os.path.exists(program_settings.settings_file):
-        open(program_settings.settings_file, 'wb').close()
-        program_settings.save()
 
     result_restore = program_settings.forced_restore(program_settings.settings_file, Settings().settings_file)
 
@@ -98,7 +95,8 @@ def setup_connection_string():
         else:
             qmb_message = QMessageBox()
             BaseView.setup_window_icon(qmb_message)
-            try_again = qmb_message.question(qmb_message, _('Invalid connection'), _('Database doesnt exists or username/password incorrect\nTry again?'), QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            try_again = qmb_message.question(qmb_message, _('Invalid connection'), _('Database doesnt exists or username/password incorrect\nTry again?'), QMessageBox.Yes | QMessageBox.No,
+                                             QMessageBox.No)
             if try_again == QMessageBox.Yes:
                 setup_connection_string()
             else:
@@ -106,10 +104,12 @@ def setup_connection_string():
     else:
         quit()
 
+
 def do_restart():
     APP.exit(0)
     subprocess.call([sys.executable, __file__])
     sys.exit(0)
+
 
 if __name__ == '__main__':
     sys.__excepthook = sys.excepthook

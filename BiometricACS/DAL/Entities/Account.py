@@ -1,6 +1,7 @@
 from sqlalchemy import NVARCHAR, INTEGER, Enum
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
+
 from .EnumModels import AccountRole
 from .BaseEntity import BaseEntity, Base
 

@@ -1,6 +1,7 @@
 from sqlalchemy import NVARCHAR, INTEGER, ForeignKey
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
+
 from .BaseEntity import BaseEntity, Base
 
 
@@ -9,7 +10,7 @@ class Department(Base, BaseEntity):
 
     _id = Column('id', INTEGER, primary_key=True)
     _name = Column('name', NVARCHAR(250), nullable=False)
-    _cheif_id = Column('cheif_id', INTEGER, ForeignKey('employee.id'), nullable=False)
+    _chief_id = Column('chief_id', INTEGER, ForeignKey('employee.id'), nullable=False)
 
     @hybrid_property
     def name(self):
@@ -21,10 +22,10 @@ class Department(Base, BaseEntity):
             self._name = value
 
     @hybrid_property
-    def cheif_id(self):
-        return self._cheif_id
+    def chief_id(self):
+        return self._chief_id
 
-    @cheif_id.setter
-    def cheif_id(self, value):
+    @chief_id.setter
+    def chief_id(self, value):
         if value > 0:
-            self._cheif_id = value
+            self._chief_id = value

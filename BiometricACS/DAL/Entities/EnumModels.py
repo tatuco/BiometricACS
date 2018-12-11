@@ -16,3 +16,10 @@ class EmployeeStatus(enum.Enum):
     trainees = 'trainees'
     vacation = 'vacation'
     dismissed = 'dismissed'
+
+
+class EventVisit(enum.Enum):
+    entered = 'entered'
+    entered_by_hand_pass = 'entered by hand pass'
+    out = 'out'
+    out_by_hand_pass = 'went out by hand pass'

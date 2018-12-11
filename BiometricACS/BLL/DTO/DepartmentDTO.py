@@ -13,11 +13,11 @@ class DepartmentDTO(BaseDTO):
             self._name = value
 
     @property
-    def cheif_id(self):
+    def chief_id(self):
         return self._cheif_id
 
-    @cheif_id.setter
-    def cheif_id(self, value):
+    @chief_id.setter
+    def chief_id(self, value):
         if value > 0:
             self._cheif_id = value
 

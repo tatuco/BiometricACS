@@ -16,6 +16,11 @@ class AccountsService(BaseService):
         self.db.create(user)
         self.rep.save()
 
+    def export_accounts(self, file_name):
+        with open(file_name, 'w') as f:
+            for acc in self.accounts:
+                f.write(str(acc) + '\n')
+
     def is_exists(self, username):
         result = self.db.find((Account.username == username,))
         return True if len(result) > 0 else False

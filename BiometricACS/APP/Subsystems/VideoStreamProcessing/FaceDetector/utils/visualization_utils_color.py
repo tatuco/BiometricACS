@@ -1,13 +1,7 @@
 import collections
-import numpy as np
-import PIL.Image as Image
-import PIL.ImageColor as ImageColor
-import PIL.ImageDraw as ImageDraw
-import PIL.ImageFont as ImageFont
-import six
-import tensorflow as tf
 import cv2
-from webcolors import name_to_rgb
+import numpy as np
+import tensorflow as tf
 
 
 def visualize_boxes_and_labels_on_image_array(image, boxes, classes, scores, category_index, instance_masks=None, keypoints=None, use_normalized_coordinates=False,

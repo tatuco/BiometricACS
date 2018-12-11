@@ -4,47 +4,47 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="204"/>
+        <location filename="../../../UI/WindowMain.py" line="335"/>
         <source>BACS Control Panel</source>
         <translation>BACS Control Panel</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="205"/>
+        <location filename="../../../UI/WindowMain.py" line="336"/>
         <source>Cameras</source>
         <translation>Cameras</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="206"/>
+        <location filename="../../../UI/WindowMain.py" line="337"/>
         <source>Video Stream</source>
         <translation>Video Stream</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="207"/>
+        <location filename="../../../UI/WindowMain.py" line="338"/>
         <source>Detected Name:</source>
         <translation>Detected Name:</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="208"/>
+        <location filename="../../../UI/WindowMain.py" line="339"/>
         <source>Control Panel</source>
         <translation>Control Panel</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="209"/>
+        <location filename="../../../UI/WindowMain.py" line="340"/>
         <source>Get Access</source>
         <translation>Get Access</translation>
     </message>
     <message>
         <location filename="../../../UI/WindowMain.py" line="210"/>
         <source>Save Face</source>
-        <translation>Save Face</translation>
+        <translation type="obsolete">Save Face</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="211"/>
+        <location filename="../../../UI/WindowMain.py" line="341"/>
         <source>Lock Checkpoint</source>
         <translation>Lock Checkpoint</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="212"/>
+        <location filename="../../../UI/WindowMain.py" line="342"/>
         <source>Unlock Checkpoint</source>
         <translation>Unlock Checkpoint</translation>
     </message>
@@ -54,114 +54,174 @@
         <translation type="obsolete">Сheckpoints</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="224"/>
+        <location filename="../../../UI/WindowMain.py" line="366"/>
         <source>Session log</source>
         <translation>Session log</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="215"/>
+        <location filename="../../../UI/WindowMain.py" line="357"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="216"/>
+        <location filename="../../../UI/WindowMain.py" line="358"/>
         <source>Statistics</source>
         <translation>Statistics</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="217"/>
+        <location filename="../../../UI/WindowMain.py" line="359"/>
         <source>File</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="232"/>
+        <location filename="../../../UI/WindowMain.py" line="370"/>
         <source>Export</source>
         <translation>Export</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="219"/>
+        <location filename="../../../UI/WindowMain.py" line="361"/>
         <source>Control</source>
         <translation>Control</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="220"/>
+        <location filename="../../../UI/WindowMain.py" line="362"/>
         <source>Settings</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="221"/>
+        <location filename="../../../UI/WindowMain.py" line="363"/>
         <source>Accounts</source>
         <translation>Accounts</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="222"/>
+        <location filename="../../../UI/WindowMain.py" line="364"/>
         <source>Data</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="223"/>
+        <location filename="../../../UI/WindowMain.py" line="365"/>
         <source>Checkpoints</source>
         <translation>Checkpoints</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="225"/>
+        <location filename="../../../UI/WindowMain.py" line="367"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="230"/>
+        <location filename="../../../UI/WindowMain.py" line="372"/>
         <source>Open</source>
         <translation>Open</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="231"/>
+        <location filename="../../../UI/WindowMain.py" line="369"/>
         <source>Import</source>
         <translation>Import</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="233"/>
+        <location filename="../../../UI/WindowMain.py" line="371"/>
         <source>Relogin</source>
         <translation>Relogin</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="234"/>
+        <location filename="../../../UI/WindowMain.py" line="373"/>
         <source>Export Accounts</source>
         <translation>Export Accounts</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="235"/>
+        <location filename="../../../UI/WindowMain.py" line="374"/>
         <source>Create</source>
         <translation>Create</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="236"/>
+        <location filename="../../../UI/WindowMain.py" line="375"/>
         <source>Add biometrics data</source>
         <translation>Add biometrics data</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="237"/>
+        <location filename="../../../UI/WindowMain.py" line="376"/>
         <source>Backing up data</source>
         <translation>Backing up data</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="238"/>
+        <location filename="../../../UI/WindowMain.py" line="377"/>
         <source>Add checkpoint</source>
         <translation>Add checkpoint</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="239"/>
+        <location filename="../../../UI/WindowMain.py" line="378"/>
         <source>Add camera</source>
         <translation>Add camera</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="240"/>
+        <location filename="../../../UI/WindowMain.py" line="379"/>
         <source>Delete camera</source>
         <translation>Delete camera</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="213"/>
+        <location filename="../../../UI/WindowMain.py" line="343"/>
         <source>Сheckpoints</source>
         <translation>Сheckpoints</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="345"/>
+        <source>Department:</source>
+        <translation>Department:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="346"/>
+        <source>Chief:</source>
+        <translation>Chief:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="347"/>
+        <source>First name:</source>
+        <translation>First name:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="348"/>
+        <source>Last name:</source>
+        <translation>Last name:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="349"/>
+        <source>Checkpoint:</source>
+        <translation>Checkpoint:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="350"/>
+        <source>Event:</source>
+        <translation>Event:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="351"/>
+        <source>Considering time</source>
+        <translation>Considering time</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="352"/>
+        <source>Start date:</source>
+        <translation>Start date:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="353"/>
+        <source>Stop date:</source>
+        <translation>Stop date:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="354"/>
+        <source>Found records:</source>
+        <translation>Found records:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="355"/>
+        <source>Search</source>
+        <translation>Search</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="356"/>
+        <source>Clear</source>
+        <translation>Clear</translation>
     </message>
 </context>
 <context>

@@ -1,13 +1,15 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QMessageBox, QMenu, QAction, QTreeWidgetItem, QGraphicsScene
-from PyQt5.QtCore import Qt, QRectF
-from PyQt5.QtGui import QImage, QPixmap
 import numpy as np
+from datetime import datetime
+from PyQt5.QtWidgets import QMainWindow, QWidget, QMessageBox, QMenu, QAction, QTreeWidgetItem, QGraphicsScene, QTableWidgetItem, QHeaderView, QAbstractItemView
+from PyQt5.QtCore import Qt, QRectF, QDate
+from PyQt5.QtGui import QImage, QPixmap
 
 from .BaseView import BaseView
 from ..Utilities import Observer
 from ..UI import Ui_MainWindow
 from ..AppStart import program_logs, program_settings
 from ..Subsystems import FACE_ALIGNMENT_IMAGE_DESIRED_DIMENSIONS, FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS, MAIN_IMAGE_DESIRED_DIMENSIONS
+from ...BLL import StatisticsSearchResult
 
 
 class MainView(QMainWindow, Observer):
@@ -37,6 +39,22 @@ class MainView(QMainWindow, Observer):
         self.ui.actionAddCamera.triggered.connect(self.controller.add_camera_clicked)
         self.ui.actionOpenSettings.triggered.connect(self.controller.open_settings_panel_clicked)
         self.ui.actionExportSettings.triggered.connect(self.controller.export_settings_clicked)
+
+        self._previous_date = datetime.now().date()
+        self.ui.cmb_department.currentIndexChanged.connect(self.controller.department_change)
+        self.ui.btn_clear.clicked.connect(self.controller.clear_statistics_clicked)
+        self.ui.wgt_calendar.selectionChanged.connect(self.selected_date_change)
+        self.ui.btn_search_statistics.clicked.connect(self.controller.search_statistics_clicked)
+        self.ui.btn_save_statistict.clicked.connect(self.controller.save_statistics_clicked)
+        attrs = [i for i in dir(StatisticsSearchResult(None, None, None, None, None)) if not i.startswith('_')]
+        self.ui.tableStatistics.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.ui.tableStatistics.setColumnCount(len(attrs))
+        self.ui.tableStatistics.setHorizontalHeaderLabels(attrs)
+        header = self.ui.tableStatistics.horizontalHeader()
+        for i, _ in enumerate(attrs):
+            header.setSectionResizeMode(i, QHeaderView.Stretch)
+        header.setStretchLastSection(True)
+
 
     def open_menu(self, position):
         if not self.controller.user_is_technical_engineer:
@@ -93,6 +111,52 @@ class MainView(QMainWindow, Observer):
     def set_default_images(self, size, f):
         image = np.full(size, 255, dtype=np.int32)
         f(image)
+
+    def set_statistics_enums(self, departments, checkpoints):
+        self.ui.cmb_department.clear()
+        self.ui.cmb_department.addItems(departments)
+        self.ui.cmb_department.setCurrentIndex(0)
+        self.ui.cmb_checkpoint.clear()
+        self.ui.cmb_checkpoint.addItems(checkpoints)
+        self.ui.cmb_checkpoint.setCurrentIndex(0)
+
+    def set_visit_events(self, events):
+        self.ui.cmb_event.clear()
+        self.ui.cmb_event.addItems(events)
+        self.ui.cmb_event.setCurrentIndex(0)
+
+    def clear_statistics_parameters(self):
+        self.ui.cmb_department.setCurrentIndex(0)
+        self.ui.cmb_checkpoint.setCurrentIndex(0)
+        self.ui.cmb_event.setCurrentIndex(0)
+        self.ui.tb_first_name.clear()
+        self.ui.tb_last_name.clear()
+        self.ui.rbtn_considering_time.setChecked(False)
+        self.ui.wgt_calendar.setSelectedDate(datetime.now())
+        self.ui.lbl_stop_date.setText(str(datetime.now().date()))
+        self.ui.lbl_start_date.setText(str(datetime.now().date()))
+
+    def set_found_visits(self, records, count):
+        self.ui.lbl_found_records.setText(str(count))
+        if not count:
+            self.ui.tableStatistics.clearContents()
+            return
+        self.ui.tableStatistics.setRowCount(count)
+        attrs = [i for i in dir(records[0]) if not i.startswith('_')]
+        for i, record in enumerate(records):
+            for j, attr in enumerate(attrs):
+                self.ui.tableStatistics.setItem(i, j, QTableWidgetItem(str(getattr(record, attr))))
+
+    def selected_date_change(self):
+        date = self.ui.wgt_calendar.selectedDate().toPyDate()
+        if date == self._previous_date:
+            self.ui.lbl_stop_date.setText(str(date))
+            self.ui.lbl_start_date.setText(str(date))
+        elif date < self._previous_date:
+            self.ui.lbl_start_date.setText(str(date))
+        else:
+            self.ui.lbl_stop_date.setText(str(date))
+        self._previous_date = date
 
     def closeEvent(self, *args, **kwargs):
         event = args[0]

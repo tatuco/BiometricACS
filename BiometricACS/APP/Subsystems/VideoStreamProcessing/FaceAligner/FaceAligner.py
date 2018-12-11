@@ -1,5 +1,5 @@
-import numpy as np
 import cv2
+import numpy as np
 
 from ..FaceInformation import FACIAL_LANDMARKS_68_IDXS, shape_to_np
 

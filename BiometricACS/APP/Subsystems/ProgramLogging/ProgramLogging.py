@@ -1,5 +1,5 @@
-import logging
 import os
+import logging
 from datetime import datetime
 from .Log import Log
 
@@ -81,6 +81,10 @@ class ProgramLogging:
     def change_settings_log(self):
         log = Log.get_change_settings_log(self._printing)
         self._execute(log, logging.WARNING)
+
+    def save_statistics_log(self, file):
+        log = Log.get_save_statistics_log(self._printing, file)
+        self._execute(log, logging.INFO)
 
     def save(self, save_path):
         with open(os.path.join(save_path, str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S')) + '.log'), 'w') as f:

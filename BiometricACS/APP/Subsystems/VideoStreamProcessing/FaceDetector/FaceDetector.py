@@ -6,6 +6,7 @@ import tensorflow as tf
 from .utils import label_map_util
 from .utils import visualization_utils_color as vis_util
 
+
 PATH_TO_CKPT = os.path.join(os.path.dirname(__file__), 'model/frozen_inference_graph_face.pb')
 PATH_TO_LABELS = os.path.join(os.path.dirname(__file__), 'protos/face_label_map.pbtxt')
 NUM_CLASSES = 2

@@ -1,7 +1,7 @@
 import cv2
 import dlib
-import numpy as np
 import os
+import numpy as np
 
 from ..FaceInformation import FACIAL_LANDMARKS_68_IDXS
 

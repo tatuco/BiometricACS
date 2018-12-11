@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError, DBAPIError, ArgumentError
 from zope.interface import implementer, provider
+
 from . import *
 from ..Interfaces import IEntitiesUnit, IRepository
 from ..Contexts import BacsDataContext
@@ -33,6 +34,10 @@ class EntitiesUnit(object):
     @property
     def visit_repository(self):
         return IRepository(self._VisitRepository)
+
+    @property
+    def department_repository(self):
+        return IRepository(self._DepartmentRepository)
     
     @staticmethod
     def is_valid_connection(connection_string):

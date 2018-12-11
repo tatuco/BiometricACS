@@ -47,7 +47,8 @@ class Settings:
             try:
                 self.restore()
             except Exception:
-                os.remove(self.settings_file)
+                if os.path.exists(self.settings_file):
+                    os.remove(self.settings_file)
                 new_settings = Settings()
                 new_settings.save()
                 self.update_obj(new_settings)

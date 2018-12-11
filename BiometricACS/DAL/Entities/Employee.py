@@ -1,6 +1,7 @@
 from sqlalchemy import NVARCHAR, INTEGER, Enum, ForeignKey
 from sqlalchemy.schema import Column
 from sqlalchemy.ext.hybrid import hybrid_property
+
 from .BaseEntity import BaseEntity, Base
 from ..Entities.EnumModels import EmployeeStatus
 

@@ -1,5 +1,5 @@
-import device
 import cv2
+import device
 import threading
 
 __device__ = []

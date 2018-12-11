@@ -1,7 +1,6 @@
 import cv2
-import multiprocessing
 import queue
-
+import multiprocessing
 
 class CameraModel:
 

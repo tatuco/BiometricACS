@@ -1,9 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
 from ..Entities import *
 
 
-class BacsDataContext():
+class BacsDataContext:
 
     def set_context(self):
         self.Account = self.sess.query(Account)

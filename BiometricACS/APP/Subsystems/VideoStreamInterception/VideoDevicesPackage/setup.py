@@ -1,5 +1,5 @@
-from distutils.core import setup, Extension
 import os
+from distutils.core import setup, Extension
 
 module_device = Extension('device',
                           sources=['device.cpp'],

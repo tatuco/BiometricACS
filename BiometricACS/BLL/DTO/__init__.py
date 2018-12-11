@@ -1,5 +1,5 @@
 from .AccountDTO import AccountDTO
-from .EnumsDTO import EmployeeStatusDTO, CamerasVectorDTO, AccountRoleDTO
+from .EnumsDTO import EmployeeStatusDTO, CamerasVectorDTO, AccountRoleDTO, EventVisitDTO
 from .BiometricsDTO import BiometricsDTO
 from .CheckpointDTO import CheckpointDTO
 from .DepartmentDTO import DepartmentDTO

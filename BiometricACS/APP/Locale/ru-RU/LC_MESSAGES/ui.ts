@@ -4,47 +4,47 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="204"/>
+        <location filename="../../../UI/WindowMain.py" line="335"/>
         <source>BACS Control Panel</source>
         <translation>BACS Панель управления</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="205"/>
+        <location filename="../../../UI/WindowMain.py" line="336"/>
         <source>Cameras</source>
         <translation>Камеры</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="206"/>
+        <location filename="../../../UI/WindowMain.py" line="337"/>
         <source>Video Stream</source>
         <translation>Видеопоток</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="207"/>
+        <location filename="../../../UI/WindowMain.py" line="338"/>
         <source>Detected Name:</source>
         <translation>Распознанные ФИО:</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="208"/>
+        <location filename="../../../UI/WindowMain.py" line="339"/>
         <source>Control Panel</source>
         <translation>Панель управления</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="209"/>
+        <location filename="../../../UI/WindowMain.py" line="340"/>
         <source>Get Access</source>
         <translation>Дать доступ</translation>
     </message>
     <message>
         <location filename="../../../UI/WindowMain.py" line="210"/>
         <source>Save Face</source>
-        <translation>Сохранить биометрию</translation>
+        <translation type="obsolete">Сохранить биометрию</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="211"/>
+        <location filename="../../../UI/WindowMain.py" line="341"/>
         <source>Lock Checkpoint</source>
         <translation>Заблокировать КПП</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="212"/>
+        <location filename="../../../UI/WindowMain.py" line="342"/>
         <source>Unlock Checkpoint</source>
         <translation>Разблокировать КПП</translation>
     </message>
@@ -54,114 +54,174 @@
         <translation type="obsolete">КПП</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="224"/>
+        <location filename="../../../UI/WindowMain.py" line="366"/>
         <source>Session log</source>
         <translation>Лог сессии</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="215"/>
+        <location filename="../../../UI/WindowMain.py" line="357"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="216"/>
+        <location filename="../../../UI/WindowMain.py" line="358"/>
         <source>Statistics</source>
         <translation>Статистика</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="217"/>
+        <location filename="../../../UI/WindowMain.py" line="359"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="232"/>
+        <location filename="../../../UI/WindowMain.py" line="370"/>
         <source>Export</source>
         <translation>Экспортировать</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="219"/>
+        <location filename="../../../UI/WindowMain.py" line="361"/>
         <source>Control</source>
         <translation>Управление</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="220"/>
+        <location filename="../../../UI/WindowMain.py" line="362"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="221"/>
+        <location filename="../../../UI/WindowMain.py" line="363"/>
         <source>Accounts</source>
         <translation>Учетная запись</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="222"/>
+        <location filename="../../../UI/WindowMain.py" line="364"/>
         <source>Data</source>
         <translation>Данные</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="223"/>
+        <location filename="../../../UI/WindowMain.py" line="365"/>
         <source>Checkpoints</source>
         <translation>КПП</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="225"/>
+        <location filename="../../../UI/WindowMain.py" line="367"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="230"/>
+        <location filename="../../../UI/WindowMain.py" line="372"/>
         <source>Open</source>
         <translation>Открыть</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="231"/>
+        <location filename="../../../UI/WindowMain.py" line="369"/>
         <source>Import</source>
         <translation>Импортировать</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="233"/>
+        <location filename="../../../UI/WindowMain.py" line="371"/>
         <source>Relogin</source>
         <translation>Перезаход</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="234"/>
+        <location filename="../../../UI/WindowMain.py" line="373"/>
         <source>Export Accounts</source>
         <translation>Экспорт учетных записей</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="235"/>
+        <location filename="../../../UI/WindowMain.py" line="374"/>
         <source>Create</source>
         <translation>Создание</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="236"/>
+        <location filename="../../../UI/WindowMain.py" line="375"/>
         <source>Add biometrics data</source>
         <translation>Добавить биометрические данные</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="237"/>
+        <location filename="../../../UI/WindowMain.py" line="376"/>
         <source>Backing up data</source>
         <translation>Резервное копирование данных</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="238"/>
+        <location filename="../../../UI/WindowMain.py" line="377"/>
         <source>Add checkpoint</source>
         <translation>Добавить КПП</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="239"/>
+        <location filename="../../../UI/WindowMain.py" line="378"/>
         <source>Add camera</source>
         <translation>Добавить камеру</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="240"/>
+        <location filename="../../../UI/WindowMain.py" line="379"/>
         <source>Delete camera</source>
         <translation>Удалить камеру</translation>
     </message>
     <message>
-        <location filename="../../../UI/WindowMain.py" line="213"/>
+        <location filename="../../../UI/WindowMain.py" line="343"/>
         <source>Сheckpoints</source>
         <translation>КПП</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="345"/>
+        <source>Department:</source>
+        <translation>Отдел:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="346"/>
+        <source>Chief:</source>
+        <translation>Начальник:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="347"/>
+        <source>First name:</source>
+        <translation>Имя:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="348"/>
+        <source>Last name:</source>
+        <translation>Фамилия:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="349"/>
+        <source>Checkpoint:</source>
+        <translation>КПП:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="350"/>
+        <source>Event:</source>
+        <translation>Событие:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="351"/>
+        <source>Considering time</source>
+        <translation>Учитывать время</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="352"/>
+        <source>Start date:</source>
+        <translation>Дата начала:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="353"/>
+        <source>Stop date:</source>
+        <translation>Дата окончания:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="354"/>
+        <source>Found records:</source>
+        <translation>Найденные записи:</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="355"/>
+        <source>Search</source>
+        <translation>Найти</translation>
+    </message>
+    <message>
+        <location filename="../../../UI/WindowMain.py" line="356"/>
+        <source>Clear</source>
+        <translation>Очистить</translation>
     </message>
 </context>
 <context>
