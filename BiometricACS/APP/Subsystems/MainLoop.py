@@ -86,7 +86,6 @@ class VideoStream(Thread):
 
     def run(self):
         face_desired_height = FACE_LANDMARKS_IMAGE_DESIRED_DIMENSIONS[0]
-
         while self._available:
 
             self.index_checker()
@@ -116,12 +115,13 @@ class VideoStream(Thread):
             self._image_faces, face, square_coef = self._face_detector.run(self._image)
             if self._is_selected:
                 self._image_faces_interceptor(cv2.cvtColor(self._image_faces, cv2.COLOR_BGR2RGB))
+
+            if square_coef==0:
+                continue
+
             if square_coef < self._settings.square_coef:
                 self._image_landmarks_interceptor([])
                 self._image_alignment_interceptor([])
-                continue
-
-            if face is list:
                 continue
 
             self._image_landmarks, landmarks = self._landmarks_predictor.run(face)

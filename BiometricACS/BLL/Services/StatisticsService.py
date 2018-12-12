@@ -98,7 +98,7 @@ class StatisticsService(BaseService):
         return results
 
     def get_chief(self, department_name='---'):
-        if department_name != '---':
+        if department_name != '---' and department_name:
             dept = self._db.department_repository.find([Department.name == department_name])
             emp = self._db.employee_repository.find([Employee.dept_id == dept[0].id])
             if emp:

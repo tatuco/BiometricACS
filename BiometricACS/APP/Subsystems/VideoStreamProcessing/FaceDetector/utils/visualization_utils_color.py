@@ -52,7 +52,7 @@ def visualize_boxes_and_labels_on_image_array(image, boxes, classes, scores, cat
             max_volume = (ymax - ymin) * (xmax - xmin)
             max_face = face
 
-        square_coef = max_volume / (image.shape[0] * image.shape[1])
+        square_coef = (ymax - ymin) * (xmax - xmin) / (image.shape[0] * image.shape[1])
         square_coef = round(square_coef, 5)
         text = f'sq_c: {square_coef}'
         font_face = cv2.LINE_AA
